@@ -8,13 +8,14 @@ options
 @parser::members
 	{
 	int i=1;
+	string ruta = "";
 	}
 
 /*
  * Parser Rules
  */
 
-go: inicio expr* fin;
+go[string val]: {ruta=val;}inicio expr* fin;
 
 inicio: checarEtiq INIT checarOp ENTER {i++;};
 
@@ -28,51 +29,51 @@ expr : (checarEtiq checarInstru checarOp ENTER
 
 checarOpbyte
 	:
-	~OPERANDBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\suma.t", true)){ file.WriteLine("Error en la linea: " + i);}}
+	~OPERANDBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}}
 	|
 	OPERANDBYTE 
 	;
 
 checarByte
 	:
-	~DIRBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\suma.t", true)){ file.WriteLine("Error en la linea: " + i);}}
+	~DIRBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}}
 	|
 	DIRBYTE 
 	;
 
 checarRsub
 	:
-	~EXEP {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\suma.t", true)){ file.WriteLine("Error en la linea: " + i);}}
+	~EXEP {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}}
 	|
 	EXEP
 	;
 
 checarOp
 	:
-	~ OPERANDO {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\suma.t", true)){ file.WriteLine("Error en la linea: " + i);}}
+	~OPERANDO {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}}
 	|
-	OPERANDO
+	OPERANDO 
 	|
 	checarEtiq
 	;
 
 checarDirec
 	:
-	~DIRECTIVA {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\suma.t", true)){ file.WriteLine("Error en la linea: " + i);}}
+	~DIRECTIVA {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}}
 	|
 	DIRECTIVA
 	;
 
 checarEtiq
 	:
-	~ETIQUETA {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\suma.t", true)){ file.WriteLine("Error en la linea: " + i);}}
+	~ETIQUETA  {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}}
 	|
-	ETIQUETA
+	ETIQUETA  
 	;
 
 checarInstru
 	:
-	~INSTRUCCION {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\suma.t", true)){ file.WriteLine("Error en la linea: " + i);}}
+	~INSTRUCCION checarDirec
 	|
 	INSTRUCCION
 	;
@@ -88,13 +89,14 @@ compileUnit
 INIT: 'START''\t'?;
 ACABA: 'END''\t'?;
 DIRBYTE: 'BYTE''\t'?;
-OPERANDBYTE: ('C'['][0-9]*[A-Z]*['] | 'X'['][0-9]*[A-F]*[']);
+OPERANDBYTE: ('C'QUOTE[0-9]*[A-Z]*QUOTE | 'X'QUOTE[0-9]*[A-F]*QUOTE );
 DIRECTIVA: ('WORD'|'RESB'|'RESW')'\t'?;
 EXEP: 'RSUB''\t'?;
 INSTRUCCION: ('ADD'|'AND'|'COMP'|'DIV'|'J'|'JEQ'|'JGT'|'JLT'|'JSUB'|'LDA'|'LDCH'|'LDL'|'LDX'|'MUL'|'OR'|'RD'|'STA'|'STCH'|'STL'|'STSW'|'STX'|'SUB'|'TD'|'TIX'|'WD')'\t'?;
-OPERANDO: [0-9]+(('H'|'h')?)(', X'?);
-ETIQUETA: ([A-Z]+ [0-9]*)(', X'?)'\t'? | '\t';
+OPERANDO: [0-9]+(('H'|'h')?)((', X'|',X')?) | ([A-Z]+ [0-9]*)((', X'|',X')?);
+ETIQUETA: ([A-Z]+ [0-9]*)((', X'|',X')?)'\t'? | '\t';
 ENTER: '\n';
+QUOTE : '\'';
 WS
-	:	(' '|'\r'|'\t') -> channel(HIDDEN)
+	:	( |'\r'|'\t') -> channel(HIDDEN)
 	;

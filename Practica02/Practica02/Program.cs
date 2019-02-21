@@ -50,7 +50,7 @@ namespace Practica02
                         //CREAMOS EL PARSER CON LOS TOKENS CREADOS
                         try
                         {
-                            parser.go();
+                            parser.go(error + 't');
                         }
                         catch (RecognitionException e)
                         {
