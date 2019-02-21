@@ -1,0 +1,1 @@
+csc /out:SimpleCalc.exe /target:exe /recurse:*.cs /reference:antlr.runtime.dll /reference:Antlr3.Runtime.dll

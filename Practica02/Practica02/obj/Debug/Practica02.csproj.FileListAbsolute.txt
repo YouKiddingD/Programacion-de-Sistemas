@@ -1,0 +1,49 @@
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\bin\Debug\Practica02.exe.config
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\bin\Debug\Practica02.exe
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\bin\Debug\Practica02.pdb
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\bin\Debug\Antlr4.Runtime.dll
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\bin\Debug\Antlr4.Runtime.xml
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\obj\Debug\SICLexer.cs
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\obj\Debug\SICParser.cs
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\obj\Debug\SICListener.cs
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\obj\Debug\SICBaseListener.cs
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\obj\Debug\SICVisitor.cs
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\obj\Debug\SICBaseVisitor.cs
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\obj\Debug\Practica02.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\obj\Debug\Practica02.csproj.CoreCompileInputs.cache
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\obj\Debug\Practica02.csproj.CopyComplete
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\obj\Debug\Practica02.exe
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\obj\Debug\Practica02.pdb
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Labo\Practica02\Practica02\obj\Debug\Practica02.csprojAssemblyReference.cache
+C:\Users\a_k_n\Documents\Programas\Tecnologias-informaticas\Node\Practica02\Practica02\bin\Debug\Practica02.exe.config
+C:\Users\a_k_n\Documents\Programas\Tecnologias-informaticas\Node\Practica02\Practica02\bin\Debug\Practica02.exe
+C:\Users\a_k_n\Documents\Programas\Tecnologias-informaticas\Node\Practica02\Practica02\bin\Debug\Practica02.pdb
+C:\Users\a_k_n\Documents\Programas\Tecnologias-informaticas\Node\Practica02\Practica02\bin\Debug\Antlr4.Runtime.dll
+C:\Users\a_k_n\Documents\Programas\Tecnologias-informaticas\Node\Practica02\Practica02\bin\Debug\Antlr4.Runtime.xml
+C:\Users\a_k_n\Documents\Programas\Tecnologias-informaticas\Node\Practica02\Practica02\obj\Debug\Practica02.csprojResolveAssemblyReference.cache
+C:\Users\a_k_n\Documents\Programas\Tecnologias-informaticas\Node\Practica02\Practica02\obj\Debug\SICLexer.cs
+C:\Users\a_k_n\Documents\Programas\Tecnologias-informaticas\Node\Practica02\Practica02\obj\Debug\SICParser.cs
+C:\Users\a_k_n\Documents\Programas\Tecnologias-informaticas\Node\Practica02\Practica02\obj\Debug\SICListener.cs
+C:\Users\a_k_n\Documents\Programas\Tecnologias-informaticas\Node\Practica02\Practica02\obj\Debug\SICBaseListener.cs
+C:\Users\a_k_n\Documents\Programas\Tecnologias-informaticas\Node\Practica02\Practica02\obj\Debug\SICVisitor.cs
+C:\Users\a_k_n\Documents\Programas\Tecnologias-informaticas\Node\Practica02\Practica02\obj\Debug\SICBaseVisitor.cs
+C:\Users\a_k_n\Documents\Programas\Tecnologias-informaticas\Node\Practica02\Practica02\obj\Debug\Practica02.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\Users\a_k_n\Documents\Programas\Tecnologias-informaticas\Node\Practica02\Practica02\obj\Debug\Practica02.csproj.CoreCompileInputs.cache
+C:\Users\a_k_n\Documents\Programas\Tecnologias-informaticas\Node\Practica02\Practica02\obj\Debug\Practica02.exe
+C:\Users\a_k_n\Documents\Programas\Tecnologias-informaticas\Node\Practica02\Practica02\obj\Debug\Practica02.pdb
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\bin\Debug\Practica02.exe.config
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\bin\Debug\Practica02.exe
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\bin\Debug\Practica02.pdb
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\bin\Debug\Antlr4.Runtime.dll
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\bin\Debug\Antlr4.Runtime.xml
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\obj\Debug\Practica02.csprojResolveAssemblyReference.cache
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\obj\Debug\SICLexer.cs
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\obj\Debug\SICParser.cs
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\obj\Debug\SICListener.cs
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\obj\Debug\SICBaseListener.cs
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\obj\Debug\SICVisitor.cs
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\obj\Debug\SICBaseVisitor.cs
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\obj\Debug\Practica02.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\obj\Debug\Practica02.csproj.CoreCompileInputs.cache
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\obj\Debug\Practica02.exe
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\obj\Debug\Practica02.pdb

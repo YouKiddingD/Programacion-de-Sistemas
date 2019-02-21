@@ -1,0 +1,15 @@
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica01\Practica01\obj\Debug\CalculadoraLexer.cs
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica01\Practica01\obj\Debug\CalculadoraParser.cs
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica01\Practica01\obj\Debug\CalculadoraListener.cs
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica01\Practica01\obj\Debug\CalculadoraBaseListener.cs
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica01\Practica01\obj\Debug\CalculadoraVisitor.cs
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica01\Practica01\obj\Debug\CalculadoraBaseVisitor.cs
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica01\Practica01\obj\Debug\Practica01.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica01\Practica01\obj\Debug\Practica01.csproj.CoreCompileInputs.cache
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica01\Practica01\bin\Debug\Practica01.exe.config
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica01\Practica01\bin\Debug\Practica01.exe
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica01\Practica01\bin\Debug\Practica01.pdb
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica01\Practica01\bin\Debug\Antlr4.Runtime.dll
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica01\Practica01\bin\Debug\Antlr4.Runtime.xml
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica01\Practica01\obj\Debug\Practica01.exe
+C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica01\Practica01\obj\Debug\Practica01.pdb
