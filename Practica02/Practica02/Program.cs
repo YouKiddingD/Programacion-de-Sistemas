@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Antlr4;
+using System.IO;
 
 namespace Practica02
 {
@@ -12,12 +13,13 @@ namespace Practica02
     {
         static void Main(string[] args)
         {
-            string line = "";
+            string line = "",prog;
             //Console.WriteLine("");
             Console.WriteLine("Utiliza exit para cerrar el programa");
             //VARIABLE PARA ALMACENAR LA CADENA DE ENTRADA
             while (true)
             {
+                prog = "";
                 line = Console.ReadLine();
                 //SE ALMACENA LA CADENA DE ENTRADA
                 if (line.Contains("EXIT") || line.Contains("exit"))
@@ -25,11 +27,22 @@ namespace Practica02
                     break;
                 else
                 {
-                    string linea; 
-                    System.IO.StreamReader file = new System.IO.StreamReader(@".\copy.s");
-                    while ((linea = file.ReadLine()) != null)
+                    string linea, error;
+                    System.IO.StreamReader file = null;
+                    try
                     {
-                        SICLexer lex = new SICLexer(new AntlrInputStream(linea + Environment.NewLine));
+                        file = new System.IO.StreamReader(@line);
+                        while ((linea = file.ReadLine()) != null)
+                        {
+                            prog += linea + '\n';
+                        }
+                        error = line.Substring(0, line.Length-1);
+                        using (FileStream fs = File.Create(error+'t'))
+                        {
+                        }
+                        prog = prog.Substring(0, prog.Length - 1);
+                        file.Close();
+                        SICLexer lex = new SICLexer(new AntlrInputStream(prog + Environment.NewLine));
                         //CREAMOS UN LEXER CON LA CADENA QUE ESCRIBIO EL USUARIO
                         CommonTokenStream tokens = new CommonTokenStream(lex);
                         //CREAMOS LOS TOKENS SEGUN EL LEXER CREADO
@@ -37,29 +50,18 @@ namespace Practica02
                         //CREAMOS EL PARSER CON LOS TOKENS CREADOS
                         try
                         {
-                            parser.expr();
+                            parser.go();
                         }
                         catch (RecognitionException e)
                         {
                             Console.Error.WriteLine(e.StackTrace);
                         }
                     }
-                    file.Close();
+                    catch(Exception e)
+                    {
+                        System.Console.WriteLine("Archivo inexistente");
+                    }
                 }
-                /*SICLexer lex = new SICLexer(new AntlrInputStream(line + Environment.NewLine));
-                //CREAMOS UN LEXER CON LA CADENA QUE ESCRIBIO EL USUARIO
-                CommonTokenStream tokens = new CommonTokenStream(lex);
-                //CREAMOS LOS TOKENS SEGUN EL LEXER CREADO
-                SICParser parser = new SICParser(tokens);
-                //CREAMOS EL PARSER CON LOS TOKENS CREADOS
-                try
-                {
-                    parser.expr();
-                }
-                catch (RecognitionException e)
-                {
-                    Console.Error.WriteLine(e.StackTrace);
-                }*/
             }
         }
     }

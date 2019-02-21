@@ -5,50 +5,51 @@ options
     language=CSharp2;
 }
 
-@asd{bool val = false;}
+@parser::members
+	{
+	int i=1;
+	}
 
 /*
  * Parser Rules
  */
 
-//prog: inicio expr* fin;
+go: inicio expr* fin;
 
-inicio: checarEtiq INIT checarOp ENTER;
+inicio: checarEtiq INIT checarOp ENTER {i++;};
 
-fin: checarEtiq ACABA checarOp ENTER; 
+fin: checarEtiq ACABA checarOp ENTER {i++;}; 
 
-expr returns[bool val]: checarEtiq checarInstru checarOp ENTER
+expr : (checarEtiq checarInstru checarOp ENTER
 	| checarEtiq checarRsub ENTER
 	| checarEtiq checarDirec checarOp ENTER
-	| checarEtiq checarByte checarOpbyte ENTER
-	| inicio
-	| fin
+	| checarEtiq checarByte checarOpbyte ENTER) {i++;}
 	;
 
 checarOpbyte
 	:
-	~OPERANDBYTE 
+	~OPERANDBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\suma.t", true)){ file.WriteLine("Error en la linea: " + i);}}
 	|
 	OPERANDBYTE 
 	;
 
 checarByte
 	:
-	~DIRBYTE
+	~DIRBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\suma.t", true)){ file.WriteLine("Error en la linea: " + i);}}
 	|
 	DIRBYTE 
 	;
 
 checarRsub
 	:
-	~EXEP
+	~EXEP {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\suma.t", true)){ file.WriteLine("Error en la linea: " + i);}}
 	|
 	EXEP
 	;
 
 checarOp
 	:
-	~ OPERANDO
+	~ OPERANDO {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\suma.t", true)){ file.WriteLine("Error en la linea: " + i);}}
 	|
 	OPERANDO
 	|
@@ -57,21 +58,21 @@ checarOp
 
 checarDirec
 	:
-	~DIRECTIVA
+	~DIRECTIVA {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\suma.t", true)){ file.WriteLine("Error en la linea: " + i);}}
 	|
 	DIRECTIVA
 	;
 
 checarEtiq
 	:
-	~ETIQUETA
+	~ETIQUETA {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\suma.t", true)){ file.WriteLine("Error en la linea: " + i);}}
 	|
 	ETIQUETA
 	;
 
 checarInstru
 	:
-	~INSTRUCCION
+	~INSTRUCCION {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\suma.t", true)){ file.WriteLine("Error en la linea: " + i);}}
 	|
 	INSTRUCCION
 	;

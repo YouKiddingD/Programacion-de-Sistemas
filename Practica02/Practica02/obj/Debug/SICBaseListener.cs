@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\SIC.g4 by ANTLR 4.6.6
+// Generated from C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Programacion-de-Sistemas\Practica02\Practica02\SIC.g4 by ANTLR 4.6.6
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -35,6 +35,19 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.6.6")]
 [System.CLSCompliant(false)]
 public partial class SICBaseListener : ISICListener {
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.go"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterGo([NotNull] SICParser.GoContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.go"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitGo([NotNull] SICParser.GoContext context) { }
+
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SICParser.inicio"/>.
 	/// <para>The default implementation does nothing.</para>

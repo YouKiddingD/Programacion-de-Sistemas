@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Practica02\Practica02\SIC.g4 by ANTLR 4.6.6
+// Generated from C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Programacion-de-Sistemas\Practica02\Practica02\SIC.g4 by ANTLR 4.6.6
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -34,6 +34,17 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.6.6")]
 [System.CLSCompliant(false)]
 public partial class SICBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, ISICVisitor<Result> {
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SICParser.go"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitGo([NotNull] SICParser.GoContext context) { return VisitChildren(context); }
+
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SICParser.inicio"/>.
 	/// <para>
