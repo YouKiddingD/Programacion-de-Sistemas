@@ -68,7 +68,6 @@ C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Progra
 C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\bin\Debug\Practica02.pdb
 C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\bin\Debug\Antlr4.Runtime.dll
 C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\bin\Debug\Antlr4.Runtime.xml
-C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\Practica02.csprojAssemblyReference.cache
 C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\SICLexer.cs
 C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\SICParser.cs
 C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\SICListener.cs
@@ -80,3 +79,4 @@ C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Progra
 C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\Practica02.csproj.CopyComplete
 C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\Practica02.exe
 C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\Practica02.pdb
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\Practica02.csprojAssemblyReference.cache

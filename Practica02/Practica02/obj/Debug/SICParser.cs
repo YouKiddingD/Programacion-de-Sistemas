@@ -444,7 +444,7 @@ public partial class SICParser : Parser {
 					_errHandler.ReportMatch(this);
 					Consume();
 				}
-				using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}
+				using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error OPBYTE en la linea: " + i);}
 				}
 				break;
 			case OPERANDBYTE:
@@ -524,7 +524,7 @@ public partial class SICParser : Parser {
 					_errHandler.ReportMatch(this);
 					Consume();
 				}
-				using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}
+				using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error BYTE en la linea: " + i);}
 				}
 				break;
 			case DIRBYTE:
@@ -604,7 +604,7 @@ public partial class SICParser : Parser {
 					_errHandler.ReportMatch(this);
 					Consume();
 				}
-				using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}
+				using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error RSUB en la linea: " + i);}
 				}
 				break;
 			case EXEP:
@@ -677,7 +677,7 @@ public partial class SICParser : Parser {
 					_errHandler.ReportMatch(this);
 					Consume();
 				}
-				using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}
+				using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error OPERADOR en la linea: " + i);}
 				}
 				break;
 
@@ -708,6 +708,9 @@ public partial class SICParser : Parser {
 	}
 
 	public partial class ChecarDirecContext : ParserRuleContext {
+		public ChecarByteContext checarByte() {
+			return GetRuleContext<ChecarByteContext>(0);
+		}
 		public ITerminalNode DIRECTIVA() { return GetToken(SICParser.DIRECTIVA, 0); }
 		public ChecarDirecContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -763,7 +766,7 @@ public partial class SICParser : Parser {
 					_errHandler.ReportMatch(this);
 					Consume();
 				}
-				using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}
+				State = 91; checarByte();
 				}
 				break;
 			case DIRECTIVA:
@@ -843,7 +846,7 @@ public partial class SICParser : Parser {
 					_errHandler.ReportMatch(this);
 					Consume();
 				}
-				using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}
+				using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error ETIQUETA en la linea: " + i);}
 				}
 				break;
 			case ETIQUETA:
@@ -1029,7 +1032,7 @@ public partial class SICParser : Parser {
 		"\x2NP\a\x5\x2\x2OL\x3\x2\x2\x2ON\x3\x2\x2\x2P\r\x3\x2\x2\x2QR\n\x4\x2"+
 		"\x2RU\b\b\x1\x2SU\a\b\x2\x2TQ\x3\x2\x2\x2TS\x3\x2\x2\x2U\xF\x3\x2\x2\x2"+
 		"VW\n\x5\x2\x2W[\b\t\x1\x2X[\a\n\x2\x2Y[\x5\x14\v\x2ZV\x3\x2\x2\x2ZX\x3"+
-		"\x2\x2\x2ZY\x3\x2\x2\x2[\x11\x3\x2\x2\x2\\]\n\x6\x2\x2]`\b\n\x1\x2^`\a"+
+		"\x2\x2\x2ZY\x3\x2\x2\x2[\x11\x3\x2\x2\x2\\]\n\x6\x2\x2]`\x5\f\a\x2^`\a"+
 		"\a\x2\x2_\\\x3\x2\x2\x2_^\x3\x2\x2\x2`\x13\x3\x2\x2\x2\x61\x62\n\a\x2"+
 		"\x2\x62\x65\b\v\x1\x2\x63\x65\a\v\x2\x2\x64\x61\x3\x2\x2\x2\x64\x63\x3"+
 		"\x2\x2\x2\x65\x15\x3\x2\x2\x2\x66g\n\b\x2\x2gj\x5\x12\n\x2hj\a\t\x2\x2"+
