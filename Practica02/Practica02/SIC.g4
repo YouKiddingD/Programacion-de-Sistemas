@@ -89,7 +89,7 @@ compileUnit
 INIT: 'START''\t'?;
 ACABA: 'END''\t'?;
 DIRBYTE: 'BYTE''\t'?;
-OPERANDBYTE: ('C'QUOTE[0-9]*[A-Z]*QUOTE | 'X'QUOTE[0-9]*[A-F]*QUOTE );
+OPERANDBYTE: ('C'QUOTE[A-Z]*[0-9]*[A-Z]*QUOTE | 'X'QUOTE[A-F]*[0-9]*[A-F]*QUOTE );
 DIRECTIVA: ('WORD'|'RESB'|'RESW')'\t'?;
 EXEP: 'RSUB''\t'?;
 INSTRUCCION: ('ADD'|'AND'|'COMP'|'DIV'|'J'|'JEQ'|'JGT'|'JLT'|'JSUB'|'LDA'|'LDCH'|'LDL'|'LDX'|'MUL'|'OR'|'RD'|'STA'|'STCH'|'STL'|'STSW'|'STX'|'SUB'|'TD'|'TIX'|'WD')'\t'?;
