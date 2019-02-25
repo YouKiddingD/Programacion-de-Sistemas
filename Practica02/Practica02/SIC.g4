@@ -29,28 +29,28 @@ expr : (checarEtiq checarInstru checarOp ENTER
 
 checarOpbyte
 	:
-	~OPERANDBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}}
+	~OPERANDBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error OPBYTE en la linea: " + i);}}
 	|
 	OPERANDBYTE 
 	;
 
 checarByte
 	:
-	~DIRBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}}
+	~DIRBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error BYTE en la linea: " + i);}}
 	|
 	DIRBYTE 
 	;
 
 checarRsub
 	:
-	~EXEP {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}}
+	~EXEP {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error RSUB en la linea: " + i);}}
 	|
 	EXEP
 	;
 
 checarOp
 	:
-	~OPERANDO {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}}
+	~OPERANDO {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error OPERADOR en la linea: " + i);}}
 	|
 	OPERANDO 
 	|
@@ -59,14 +59,14 @@ checarOp
 
 checarDirec
 	:
-	~DIRECTIVA {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}}
+	~DIRECTIVA checarByte
 	|
 	DIRECTIVA
 	;
 
 checarEtiq
 	:
-	~ETIQUETA  {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error en la linea: " + i);}}
+	~ETIQUETA  {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error ETIQUETA en la linea: " + i);}}
 	|
 	ETIQUETA  
 	;
