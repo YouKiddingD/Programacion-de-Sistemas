@@ -50,7 +50,7 @@ checarRsub
 
 checarOp
 	:
-	~OPERANDO {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error OPERADOR en la linea: " + i);}}
+	~OPERANDO //{using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error OPERADOR en la linea: " + i);}}
 	|
 	OPERANDO 
 	|

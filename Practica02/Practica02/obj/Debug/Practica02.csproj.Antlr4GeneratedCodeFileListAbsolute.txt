@@ -1,6 +1,6 @@
-C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\SICLexer.cs
-C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\SICParser.cs
-C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\SICListener.cs
-C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\SICBaseListener.cs
-C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\SICVisitor.cs
-C:\Users\a_k_n\Documents\Programas\Programacion de sistemas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\SICBaseVisitor.cs
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\SICLexer.cs
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\SICParser.cs
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\SICListener.cs
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\SICBaseListener.cs
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\SICVisitor.cs
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica02\Practica02\obj\Debug\SICBaseVisitor.cs
