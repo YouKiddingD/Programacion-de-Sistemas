@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Archivo Intermedio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Archivo Intermedio.Designer.cs">
+      <DependentUpon>Archivo Intermedio.cs</DependentUpon>
+    </Compile>
     <Compile Include="ArchivoFuente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Archivo Intermedio.resx">
+      <DependentUpon>Archivo Intermedio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ArchivoFuente.resx">
       <DependentUpon>ArchivoFuente.cs</DependentUpon>
     </EmbeddedResource>

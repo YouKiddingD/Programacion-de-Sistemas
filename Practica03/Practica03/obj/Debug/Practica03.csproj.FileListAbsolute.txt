@@ -9,3 +9,4 @@ C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Progra
 C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.csproj.CoreCompileInputs.cache
 C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.exe
 C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.pdb
+C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.Archivo_Intermedio.resources

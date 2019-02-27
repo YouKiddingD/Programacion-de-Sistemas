@@ -16,5 +16,20 @@ namespace Practica03
         {
             InitializeComponent();
         }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public void cambiarText(string nuevoText)
+        {
+            this.richTextBox1.Text += nuevoText;
+        }
+
+        public string regresarText()
+        {
+            return this.richTextBox1.Text;
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Practica03
 {
-    partial class ArchivoFuente
+    partial class Archivo_Intermedio
     {
         /// <summary>
         /// Required designer variable.
@@ -39,17 +39,15 @@
             this.richTextBox1.Size = new System.Drawing.Size(800, 450);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
-            // ArchivoFuente
+            // Archivo_Intermedio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.richTextBox1);
-            this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Name = "ArchivoFuente";
-            this.Text = "ArchivoFuente";
+            this.Name = "Archivo_Intermedio";
+            this.Text = "Archivo_Intermedio";
             this.ResumeLayout(false);
 
         }

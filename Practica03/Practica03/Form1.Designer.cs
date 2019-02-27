@@ -32,10 +32,10 @@
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ventanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarComoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ventanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.simularToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventanaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,6 +82,27 @@
             this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
             this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.cerrarToolStripMenuItem.Text = "Abrir";
+            this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
+            // 
+            // guardarToolStripMenuItem
+            // 
+            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
+            // 
+            // guardarComoToolStripMenuItem
+            // 
+            this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
+            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.guardarComoToolStripMenuItem.Text = "Guardar como";
+            this.guardarComoToolStripMenuItem.Click += new System.EventHandler(this.guardarComoToolStripMenuItem_Click);
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.salirToolStripMenuItem.Text = "Salir";
             // 
             // ventanaToolStripMenuItem
             // 
@@ -89,24 +110,6 @@
             this.ventanaToolStripMenuItem.Size = new System.Drawing.Size(90, 24);
             this.ventanaToolStripMenuItem.Text = "Ensamblar";
             this.ventanaToolStripMenuItem.Click += new System.EventHandler(this.ventanaToolStripMenuItem_Click);
-            // 
-            // guardarToolStripMenuItem
-            // 
-            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.guardarToolStripMenuItem.Text = "Guardar";
-            // 
-            // guardarComoToolStripMenuItem
-            // 
-            this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
-            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.guardarComoToolStripMenuItem.Text = "Guardar como";
-            // 
-            // salirToolStripMenuItem
-            // 
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.salirToolStripMenuItem.Text = "Salir";
             // 
             // simularToolStripMenuItem
             // 
