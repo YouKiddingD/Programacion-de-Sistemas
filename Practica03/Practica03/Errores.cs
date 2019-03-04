@@ -16,5 +16,10 @@ namespace Practica03
         {
             InitializeComponent();
         }
+
+        public void cambiarText(string nuevoText)
+        {
+            this.richTextBox1.Text += nuevoText;
+        }
     }
 }

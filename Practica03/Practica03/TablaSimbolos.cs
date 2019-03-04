@@ -16,5 +16,10 @@ namespace Practica03
         {
             InitializeComponent();
         }
+
+        private void TablaSimbolos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

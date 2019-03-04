@@ -16,5 +16,10 @@ namespace Practica03
         {
             InitializeComponent();
         }
+
+        private void Archivo_Intermedio_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

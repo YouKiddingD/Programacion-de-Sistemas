@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Antlr4.Runtime;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,9 @@ namespace Practica03
         public string filePath = "";
         ArchivoFuente archfuente;
         Archivo_Intermedio archInt;
+        CodigoObjeto codObj;
+        Errores errores;
+        TablaSimbolos tamSimb;
 
         public Ensamblador()
         {
@@ -25,21 +29,103 @@ namespace Practica03
         private void crearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ArchivoFuente newMDIChild = new ArchivoFuente();
-            // Set the Parent Form of the Child window.  
             newMDIChild.MdiParent = this;
             archfuente = newMDIChild;
-            // Display the new form.  
             archfuente.Show();
         }
 
         private void ventanaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            openWindowsEnsamblar();
+
+            string line = "", prog;
+            prog = "";
+            line = filePath;
+            //SE ALMACENA LA CADENA DE ENTRADA
+
+            string linea, error;
+            System.IO.StreamReader file = null;
+
+            try
+            {
+                file = new System.IO.StreamReader(@line);
+                while ((linea = file.ReadLine()) != null)
+                {
+                    prog += linea + '\n';
+                }
+                error = line.Substring(0, line.Length - 1);
+                using (FileStream fs = File.Create(error + 't'))
+                {
+                }
+                prog = prog.Substring(0, prog.Length - 1);
+                file.Close();
+                SICLexer lex = new SICLexer(new AntlrInputStream(prog + Environment.NewLine));
+                //CREAMOS UN LEXER CON LA CADENA QUE ESCRIBIO EL USUARIO
+                CommonTokenStream tokens = new CommonTokenStream(lex);
+                //CREAMOS LOS TOKENS SEGUN EL LEXER CREADO
+                SICParser parser = new SICParser(tokens);
+                //CREAMOS EL PARSER CON LOS TOKENS CREADOS
+
+                parser.go(error + 't');
+                printErrors();
+            }
+            catch (RecognitionException ex)
+            {
+                Console.Error.WriteLine(ex.StackTrace);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine("Archivo inexistente");
+            }
+        }
+
+        private void openWindowsEnsamblar()
+        {
+            //Ventana Archivo Int
             Archivo_Intermedio newMDIChild = new Archivo_Intermedio();
-            // Set the Parent Form of the Child window.  
             newMDIChild.MdiParent = this;
             archInt = newMDIChild;
-            // Display the new form.  
             archInt.Show();
+
+            //Ventana Codigo Objeto
+            CodigoObjeto newCodObj = new CodigoObjeto();
+            newCodObj.MdiParent = this;
+            codObj = newCodObj;
+            codObj.Show();
+
+            //Ventana Errores
+            Errores newErrores = new Errores();
+            newErrores.MdiParent = this;
+            errores = newErrores;
+            errores.Show();
+
+            //Ventana Errores
+            TablaSimbolos newTabSim = new TablaSimbolos();
+            newTabSim.MdiParent = this;
+            tamSimb = newTabSim;
+            tamSimb.Show();
+
+        }
+
+        private void printErrors()
+        {
+            System.IO.StreamReader file = null;
+            string linea = "";
+            try
+            {
+                string fileError = filePath.Substring(0, filePath.Length - 1);
+                file = new System.IO.StreamReader(fileError + "t");
+
+                while ((linea = file.ReadLine()) != null)
+                {
+                    errores.cambiarText(linea + '\n');
+                }
+                file.Close();
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine("Archivo inexistente");
+            }
         }
 
         private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -49,6 +135,7 @@ namespace Practica03
             archfuente = newMDIChild;
             archfuente.Show();
             System.IO.StreamReader file = null;
+
             string linea = "";
             try
             {
@@ -77,13 +164,35 @@ namespace Practica03
 
         private void guardarComoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Stream myStream;
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
 
+            saveFileDialog.Filter = "Codigo fuente (*.s)|*.s";
+            saveFileDialog.FilterIndex = 2;
+            saveFileDialog.RestoreDirectory = true;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = saveFileDialog.OpenFile()) != null)
+                {
+                    myStream.Close();
+                    string createText = archfuente.regresarText();
+                    File.WriteAllText(saveFileDialog.FileName, createText);
+                }
+            }
         }
 
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string createText = archfuente.regresarText();
-            File.WriteAllText(filePath, createText);
+            if (filePath == "")
+            {
+                guardarComoToolStripMenuItem_Click(sender, e);
+            }
+            else
+            {
+                string createText = archfuente.regresarText();
+                File.WriteAllText(filePath, createText);
+            }
         }
     }
 }
