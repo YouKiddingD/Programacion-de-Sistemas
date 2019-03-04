@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace Practica03
 {
-    public partial class Form1 : Form
+    public partial class Ensamblador : Form
     {
         public string filePath = "";
         ArchivoFuente archfuente;
         Archivo_Intermedio archInt;
 
-        public Form1()
+        public Ensamblador()
         {
             InitializeComponent();
         }

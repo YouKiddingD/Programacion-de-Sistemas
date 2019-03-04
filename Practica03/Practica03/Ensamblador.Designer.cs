@@ -1,6 +1,6 @@
 ﻿namespace Practica03
 {
-    partial class Form1
+    partial class Ensamblador
     {
         /// <summary>
         /// Variable del diseñador necesaria.
