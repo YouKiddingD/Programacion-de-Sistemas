@@ -9,6 +9,7 @@ options
 	{
 	int i=1;
 	string ruta = "";
+	int CP;
 	}
 
 /*
@@ -16,16 +17,16 @@ options
  */
 
 
-go[string val]: {ruta=val;}inicio expr* fin;
+go[string val, int dirIni]: {ruta=val; CP=dirIni;}inicio expr* fin;
 
 inicio: checarEtiq INIT checarOp ENTER {i++;};
 
 fin: checarEtiq ACABA checarOp ENTER {i++;}; 
 
-expr : (checarEtiq checarInstru checarOp ENTER
-	| checarEtiq checarRsub ENTER
+expr : (checarEtiq checarInstru checarOp updateCPInst ENTER
+	| checarEtiq checarRsub updateCPInst ENTER
 	| checarEtiq checarDirec checarOp ENTER
-	| checarEtiq checarByte checarOpbyte ENTER) {i++;}
+	| checarEtiq checarByte checarOpbyte updateCPByte ENTER) {i++;}
 	;
 
 checarOpbyte
@@ -76,12 +77,16 @@ checarInstru
 	:
 	~INSTRUCCION checarDirec
 	|
-	INSTRUCCION
+	INSTRUCCION 
 	;
 
 compileUnit
 	:	expr EOF
 	;
+
+updateCPInst : {CP+=3;};
+
+updateCPByte : {};
 
 /*
  * Lexer Rules

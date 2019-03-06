@@ -162,5 +162,27 @@ public interface ISICListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitCompileUnit([NotNull] SICParser.CompileUnitContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.updateCPInst"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterUpdateCPInst([NotNull] SICParser.UpdateCPInstContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.updateCPInst"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitUpdateCPInst([NotNull] SICParser.UpdateCPInstContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.updateCPByte"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterUpdateCPByte([NotNull] SICParser.UpdateCPByteContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.updateCPByte"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitUpdateCPByte([NotNull] SICParser.UpdateCPByteContext context);
 }
 } // namespace Practica03

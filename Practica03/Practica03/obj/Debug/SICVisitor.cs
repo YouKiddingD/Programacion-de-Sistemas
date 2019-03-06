@@ -115,5 +115,19 @@ public interface ISICVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitCompileUnit([NotNull] SICParser.CompileUnitContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SICParser.updateCPInst"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUpdateCPInst([NotNull] SICParser.UpdateCPInstContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SICParser.updateCPByte"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUpdateCPByte([NotNull] SICParser.UpdateCPByteContext context);
 }
 } // namespace Practica03

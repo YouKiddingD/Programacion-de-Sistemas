@@ -191,6 +191,32 @@ public partial class SICBaseListener : ISICListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitCompileUnit([NotNull] SICParser.CompileUnitContext context) { }
 
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.updateCPInst"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUpdateCPInst([NotNull] SICParser.UpdateCPInstContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.updateCPInst"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUpdateCPInst([NotNull] SICParser.UpdateCPInstContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.updateCPByte"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUpdateCPByte([NotNull] SICParser.UpdateCPByteContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.updateCPByte"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUpdateCPByte([NotNull] SICParser.UpdateCPByteContext context) { }
+
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>
 	public virtual void EnterEveryRule([NotNull] ParserRuleContext context) { }

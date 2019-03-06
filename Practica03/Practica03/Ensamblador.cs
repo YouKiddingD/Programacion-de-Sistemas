@@ -28,6 +28,7 @@ namespace Practica03
 
         private void crearToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            filePath = "";
             ArchivoFuente newMDIChild = new ArchivoFuente();
             newMDIChild.MdiParent = this;
             archfuente = newMDIChild;
@@ -66,7 +67,7 @@ namespace Practica03
                 SICParser parser = new SICParser(tokens);
                 //CREAMOS EL PARSER CON LOS TOKENS CREADOS
 
-                parser.go(error + 't');
+                parser.go(error + 't', 0);
                 printErrors();
             }
             catch (RecognitionException ex)
@@ -135,7 +136,7 @@ namespace Practica03
             archfuente = newMDIChild;
             archfuente.Show();
             System.IO.StreamReader file = null;
-
+            filePath = "";
             string linea = "";
             try
             {
