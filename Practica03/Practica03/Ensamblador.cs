@@ -70,12 +70,60 @@ namespace Practica03
                 SICParser parser = new SICParser(tokens);
                 //CREAMOS EL PARSER CON LOS TOKENS CREADOS
 
-                parser.go(error + 't', 0, error + 'i');
+                parser.go(error + 't', error + 'i');
                 printErrors();
+                mostrarIntermedio();
             }
             catch (RecognitionException ex)
             {
                 Console.Error.WriteLine(ex.StackTrace);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine("Archivo inexistente");
+            }
+        }
+
+        private void guardarTabsim(string sim, string direc)
+        {
+            string direccion = sim + "\t" + direc;
+            tamSimb.cambiarText(direccion + '\n');
+        }
+
+        private void mostrarIntermedio()
+        {
+            System.IO.StreamReader file = null;
+            string linea = "";
+            string[] lines;
+            bool noPrimeraLinea = false;
+            try
+            {
+                string fileError = filePath.Substring(0, filePath.Length - 1);
+                file = new System.IO.StreamReader(fileError + "i");
+                while ((linea = file.ReadLine()) != null)
+                {
+                    lines = linea.Split(' ');
+                    string direc = Int32.Parse(lines[0]).ToString("X");
+                    archInt.cambiarText(direc);
+                    if (noPrimeraLinea)
+                    {
+                        if (lines[1][0] != '\t' && lines[1][0] != ' ')
+                        {
+                            guardarTabsim(lines[1], direc);
+                        }
+                    }
+                    else
+                    {
+                        noPrimeraLinea = true;
+                    }
+                    lines = lines.Skip(1).ToArray();
+                    foreach(string l in lines)
+                    {
+                        archInt.cambiarText(l);
+                    }
+                    archInt.cambiarText("\n");
+                }
+                file.Close();
             }
             catch (Exception ex)
             {

@@ -131,6 +131,17 @@ public interface ISICListener : IParseTreeListener {
 	void ExitChecarRsub([NotNull] SICParser.ChecarRsubContext context);
 
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.checarOpSTART"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterChecarOpSTART([NotNull] SICParser.ChecarOpSTARTContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.checarOpSTART"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitChecarOpSTART([NotNull] SICParser.ChecarOpSTARTContext context);
+
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SICParser.checarOp"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -151,6 +162,17 @@ public interface ISICListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitChecarDirec([NotNull] SICParser.ChecarDirecContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.casoDirec"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterCasoDirec([NotNull] SICParser.CasoDirecContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.casoDirec"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitCasoDirec([NotNull] SICParser.CasoDirecContext context);
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SICParser.checarEtiq"/>.

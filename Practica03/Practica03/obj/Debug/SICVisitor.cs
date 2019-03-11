@@ -96,6 +96,13 @@ public interface ISICVisitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitChecarRsub([NotNull] SICParser.ChecarRsubContext context);
 
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="SICParser.checarOpSTART"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitChecarOpSTART([NotNull] SICParser.ChecarOpSTARTContext context);
+
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="SICParser.checarOp"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -108,6 +115,13 @@ public interface ISICVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitChecarDirec([NotNull] SICParser.ChecarDirecContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SICParser.casoDirec"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCasoDirec([NotNull] SICParser.CasoDirecContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SICParser.checarEtiq"/>.
