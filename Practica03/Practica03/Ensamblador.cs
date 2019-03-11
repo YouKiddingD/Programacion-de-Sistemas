@@ -58,6 +58,9 @@ namespace Practica03
                 using (FileStream fs = File.Create(error + 't'))
                 {
                 }
+                using (FileStream fs = File.Create(error + 'i'))
+                {
+                }
                 prog = prog.Substring(0, prog.Length - 1);
                 file.Close();
                 SICLexer lex = new SICLexer(new AntlrInputStream(prog + Environment.NewLine));
@@ -67,7 +70,7 @@ namespace Practica03
                 SICParser parser = new SICParser(tokens);
                 //CREAMOS EL PARSER CON LOS TOKENS CREADOS
 
-                parser.go(error + 't', 0);
+                parser.go(error + 't', 0, error + 'i');
                 printErrors();
             }
             catch (RecognitionException ex)

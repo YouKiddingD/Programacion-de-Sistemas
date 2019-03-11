@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\SIC.g4 by ANTLR 4.6.6
+// Generated from C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica03\SIC.g4 by ANTLR 4.6.6
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -59,6 +59,20 @@ public interface ISICVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitExpr([NotNull] SICParser.ExprContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SICParser.checarINIT"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitChecarINIT([NotNull] SICParser.ChecarINITContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SICParser.checarACABA"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitChecarACABA([NotNull] SICParser.ChecarACABAContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SICParser.checarOpbyte"/>.
@@ -122,6 +136,13 @@ public interface ISICVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitUpdateCPInst([NotNull] SICParser.UpdateCPInstContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SICParser.updateLine"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUpdateLine([NotNull] SICParser.UpdateLineContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SICParser.updateCPByte"/>.

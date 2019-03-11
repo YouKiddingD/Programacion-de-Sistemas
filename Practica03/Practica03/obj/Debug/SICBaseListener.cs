@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\SIC.g4 by ANTLR 4.6.6
+// Generated from C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica03\SIC.g4 by ANTLR 4.6.6
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -86,6 +86,32 @@ public partial class SICBaseListener : ISICListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitExpr([NotNull] SICParser.ExprContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.checarINIT"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterChecarINIT([NotNull] SICParser.ChecarINITContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.checarINIT"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitChecarINIT([NotNull] SICParser.ChecarINITContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.checarACABA"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterChecarACABA([NotNull] SICParser.ChecarACABAContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.checarACABA"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitChecarACABA([NotNull] SICParser.ChecarACABAContext context) { }
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SICParser.checarOpbyte"/>.
@@ -203,6 +229,19 @@ public partial class SICBaseListener : ISICListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitUpdateCPInst([NotNull] SICParser.UpdateCPInstContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.updateLine"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUpdateLine([NotNull] SICParser.UpdateLineContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.updateLine"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUpdateLine([NotNull] SICParser.UpdateLineContext context) { }
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SICParser.updateCPByte"/>.

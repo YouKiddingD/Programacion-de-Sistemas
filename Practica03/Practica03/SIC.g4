@@ -8,8 +8,12 @@ options
 @parser::members
 	{
 	int i=1;
-	string ruta = "";
-	int CP;
+	string rutae = "";
+	string rutai = "";
+	int CP=0;
+	string linea = "";
+	string Direct = "";
+	int OP = 0;
 	}
 
 /*
@@ -17,44 +21,64 @@ options
  */
 
 
-go[string val, int dirIni]: {ruta=val; CP=dirIni;}inicio expr* fin;
+go[string vale, int dirIni, string vali]: {rutae=vale; CP=dirIni; rutai = vali;}inicio expr* fin;
 
-inicio: checarEtiq INIT checarOp ENTER {i++;};
+inicio: checarEtiq checarINIT checarOp updateLine ENTER {i++;};
 
-fin: checarEtiq ACABA checarOp ENTER {i++;}; 
+fin: checarEtiq checarACABA checarOp ENTER {i++;}{using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutai, true)){ file.WriteLine(linea);}}; 
 
-expr : (checarEtiq checarInstru checarOp updateCPInst ENTER
-	| checarEtiq checarRsub updateCPInst ENTER
-	| checarEtiq checarDirec checarOp ENTER
-	| checarEtiq checarByte checarOpbyte updateCPByte ENTER) {i++;}
+expr : (checarEtiq checarInstru checarOp updateCPInst updateLine ENTER
+	| checarEtiq checarRsub updateCPInst updateLine ENTER
+	| checarEtiq checarDirec checarOp casoDirec updateLine ENTER
+	| checarEtiq checarByte checarOpbyte updateCPByte updateLine ENTER) {i++;}
+	;
+
+checarINIT
+	:
+	INIT {linea+= $INIT.text;}
+	;
+
+checarACABA
+	:
+	ACABA {linea+= $ACABA.text;}
 	;
 
 checarOpbyte
 	:
-	~OPERANDBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error OPBYTE en la linea: " + i);}}
+	~OPERANDBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error OPBYTE en la linea: " + i);}}
 	|
-	OPERANDBYTE 
+	OPERANDBYTE {linea+= $OPERANDBYTE.text;}
 	;
 
 checarByte
 	:
-	~DIRBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error BYTE en la linea: " + i);}}
+	~DIRBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error BYTE en la linea: " + i);}}
 	|
-	DIRBYTE 
+	DIRBYTE {linea+= $DIRBYTE.text + " ";}
 	;
 
 checarRsub
 	:
-	~EXEP {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error RSUB en la linea: " + i);}}
+	~EXEP {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error RSUB en la linea: " + i);}}
 	|
-	EXEP
+	EXEP {linea+= $EXEP.text;}
 	;
 
 checarOp
 	:
 	~OPERANDO //{using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error OPERADOR en la linea: " + i);}}
 	|
-	OPERANDO 
+	OPERANDO {
+	linea+= $OPERANDO.text;
+	if($OPERANDO.text[$OPERANDO.text.Length()-1]=='H')
+	{
+		string final = $OPERANDO.text.Substring(0, $OPERANDO.text.Length - 1);
+	}
+	else
+	{
+		OP =  Int32.Parse($OPERANDO.text);
+	}
+	}
 	|
 	checarEtiq
 	;
@@ -63,21 +87,33 @@ checarDirec
 	:
 	~DIRECTIVA checarByte
 	|
-	DIRECTIVA
+	DIRECTIVA {linea+= $DIRECTIVA.text + " "; Direct = $DIRECTIVA.text}
 	;
+
+casoDirec : {
+switch(Direct)
+	{
+		case "WORD\t": CP+=3;
+		break;
+		case "RESW\t": CP+=;
+		break;
+		case "RESB\t": CP+=3;
+		break;
+	}
+			}
 
 checarEtiq
 	:
-	~ETIQUETA  {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error ETIQUETA en la linea: " + i);}}
+	~ETIQUETA  {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error ETIQUETA en la linea: " + i);}}
 	|
-	ETIQUETA  
+	ETIQUETA  {linea+= CP + " " + $ETIQUETA.text + " ";}
 	;
 
 checarInstru
 	:
 	~INSTRUCCION checarDirec
 	|
-	INSTRUCCION 
+	INSTRUCCION {linea+=$INSTRUCCION.text + " ";}
 	;
 
 compileUnit
@@ -85,6 +121,8 @@ compileUnit
 	;
 
 updateCPInst : {CP+=3;};
+
+updateLine : {linea+='\n';};
 
 updateCPByte : {};
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\SIC.g4 by ANTLR 4.6.6
+// Generated from C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica03\SIC.g4 by ANTLR 4.6.6
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -74,6 +74,28 @@ public interface ISICListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitExpr([NotNull] SICParser.ExprContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.checarINIT"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterChecarINIT([NotNull] SICParser.ChecarINITContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.checarINIT"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitChecarINIT([NotNull] SICParser.ChecarINITContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.checarACABA"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterChecarACABA([NotNull] SICParser.ChecarACABAContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.checarACABA"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitChecarACABA([NotNull] SICParser.ChecarACABAContext context);
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SICParser.checarOpbyte"/>.
@@ -173,6 +195,17 @@ public interface ISICListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitUpdateCPInst([NotNull] SICParser.UpdateCPInstContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.updateLine"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterUpdateLine([NotNull] SICParser.UpdateLineContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.updateLine"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitUpdateLine([NotNull] SICParser.UpdateLineContext context);
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SICParser.updateCPByte"/>.
