@@ -28,35 +28,88 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ETIQUETA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INSTRUCCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OPERANDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODOBJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // dataGridView1
             // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(962, 433);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CP,
+            this.ETIQUETA,
+            this.INSTRUCCION,
+            this.OPERANDO,
+            this.CODOBJ});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(722, 352);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // CP
+            // 
+            this.CP.HeaderText = "CP";
+            this.CP.Name = "CP";
+            this.CP.ReadOnly = true;
+            // 
+            // ETIQUETA
+            // 
+            this.ETIQUETA.HeaderText = "ETIQUETA";
+            this.ETIQUETA.Name = "ETIQUETA";
+            this.ETIQUETA.ReadOnly = true;
+            // 
+            // INSTRUCCION
+            // 
+            this.INSTRUCCION.HeaderText = "INSTRUCCION";
+            this.INSTRUCCION.Name = "INSTRUCCION";
+            this.INSTRUCCION.ReadOnly = true;
+            // 
+            // OPERANDO
+            // 
+            this.OPERANDO.HeaderText = "OPERANDO";
+            this.OPERANDO.Name = "OPERANDO";
+            this.OPERANDO.ReadOnly = true;
+            // 
+            // CODOBJ
+            // 
+            this.CODOBJ.HeaderText = "CODIGO OBJETO";
+            this.CODOBJ.Name = "CODOBJ";
+            this.CODOBJ.ReadOnly = true;
             // 
             // Archivo_Intermedio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 433);
-            this.Controls.Add(this.richTextBox1);
+            this.ClientSize = new System.Drawing.Size(722, 352);
+            this.Controls.Add(this.dataGridView1);
             this.Location = new System.Drawing.Point(0, 390);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Archivo_Intermedio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Archivo_Intermedio";
             this.Load += new System.EventHandler(this.Archivo_Intermedio_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ETIQUETA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INSTRUCCION;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OPERANDO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CODOBJ;
     }
 }

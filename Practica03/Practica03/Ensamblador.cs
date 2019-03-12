@@ -96,18 +96,20 @@ namespace Practica03
             string linea = "";
             string[] lines;
             bool noPrimeraLinea = false;
+            int fila=0, columna;
             try
             {
                 string fileError = filePath.Substring(0, filePath.Length - 1);
                 file = new System.IO.StreamReader(fileError + "i");
                 while ((linea = file.ReadLine()) != null)
                 {
-                    lines = linea.Split(' ');
+                    columna=1;
+                    lines = linea.Split(new char[] { ' ', '\t' });
                     string direc = Int32.Parse(lines[0]).ToString("X");
-                    archInt.cambiarText(direc);
+                    archInt.cambiarText(fila,0,direc);
                     if (noPrimeraLinea)
                     {
-                        if (lines[1][0] != '\t' && lines[1][0] != ' ')
+                        if (lines[1][0] != '\t' && lines[1][0] != ' ' && lines[1][0] != 'u')
                         {
                             guardarTabsim(lines[1], direc);
                         }
@@ -119,11 +121,13 @@ namespace Practica03
                     lines = lines.Skip(1).ToArray();
                     foreach(string l in lines)
                     {
-                        archInt.cambiarText(l);
+                        archInt.cambiarText(fila,columna,l);
+                        columna++;
                     }
-                    archInt.cambiarText("\n");
+                    fila++;
                 }
                 file.Close();
+                toolStripTextBox1.Text = "Tamaño: " + archInt.tamanoArchivo().ToString("X");
             }
             catch (Exception ex)
             {

@@ -22,11 +22,30 @@ namespace Practica03
 
         }
 
-        public void cambiarText(string nuevoText)
+        public void cambiarText(int fila, int columna, string nuevoText)
         {
-            this.richTextBox1.Text += nuevoText;
-            if (nuevoText != "\n")
-                this.richTextBox1.Text += " ";
+            if(dataGridView1.Rows.Count<fila+1)
+            {
+                dataGridView1.Rows.Add();
+            }
+            if(nuevoText=="u")
+            {
+                dataGridView1.Rows[fila].Cells[columna].Value = " ";
+            }
+            else
+            {
+                dataGridView1.Rows[fila].Cells[columna].Value = nuevoText;
+            }
+        }
+
+        public int tamanoArchivo()
+        {
+            return Convert.ToInt32(dataGridView1.Rows[dataGridView1.Rows.Count-1].Cells[0].Value.ToString(), 16) - Convert.ToInt32(dataGridView1.Rows[0].Cells[0].Value.ToString(), 16);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

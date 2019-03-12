@@ -52,22 +52,20 @@ checarOpbyte
 
 checarByte
 	:
-	~DIRBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error BYTE en la linea: " + i);}}
+	~DIRBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error BYTE en la linea: " + i);}}{linea+= $DIRBYTE.text;CP-=3;}
 	|
-	DIRBYTE {linea+= $DIRBYTE.text + " ";}
+	DIRBYTE {linea+= $DIRBYTE.text;}
 	;
 
 checarRsub
 	:
-	~EXEP {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error RSUB en la linea: " + i);}}
+	~EXEP {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error RSUB en la linea: " + i);}}{linea+= $EXEP.text;}
 	|
 	EXEP {linea+= $EXEP.text;}
 	;
 
 checarOpSTART
 	:
-	~OPERANDO //{using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error OPERADOR en la linea: " + i);}}
-	|
 	OPERANDO {
 	linea+= $OPERANDO.text;
 	if($OPERANDO.text[$OPERANDO.text.Length-1]=='H' || $OPERANDO.text[$OPERANDO.text.Length-1]=='h')
@@ -82,13 +80,13 @@ checarOpSTART
 	linea = CP + linea.Substring(1,linea.Length-1);
 	}
 	|
-	checarEtiq
+	ETIQUETA {linea+=$ETIQUETA.text;}
+	|
+	~OPERANDO
 	;
 
 checarOp
 	:
-	~OPERANDO //{using (System.IO.StreamWriter file = new System.IO.StreamWriter(@ruta, true)){ file.WriteLine("Error OPERADOR en la linea: " + i);}}
-	|
 	OPERANDO {
 	linea+= $OPERANDO.text;
 	if($OPERANDO.text[$OPERANDO.text.Length-1]=='H' || $OPERANDO.text[$OPERANDO.text.Length-1]=='h')
@@ -102,14 +100,16 @@ checarOp
 	}
 	}
 	|
-	checarEtiq
+	ETIQUETA {linea+=$ETIQUETA.text;}
+	|
+	~OPERANDO
 	;
 
 checarDirec
 	:
 	~DIRECTIVA checarByte
 	|
-	DIRECTIVA {linea+= $DIRECTIVA.text + " "; Direct = $DIRECTIVA.text;}
+	DIRECTIVA {linea+= $DIRECTIVA.text; Direct = $DIRECTIVA.text;}
 	;
 
 casoDirec : {
@@ -129,14 +129,14 @@ checarEtiq
 	:
 	~ETIQUETA  {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error ETIQUETA en la linea: " + i);}}
 	|
-	ETIQUETA  {linea+= CP + " " + $ETIQUETA.text + " ";}
+	ETIQUETA  {linea+= CP + " "; if($ETIQUETA.text=="\t" || $ETIQUETA.text==" "){linea+="u ";}else{linea+=$ETIQUETA.text;}}
 	;
 
 checarInstru
 	:
 	~INSTRUCCION checarDirec
 	|
-	INSTRUCCION {linea+=$INSTRUCCION.text + " ";}
+	INSTRUCCION {linea+=$INSTRUCCION.text;}
 	;
 
 compileUnit
