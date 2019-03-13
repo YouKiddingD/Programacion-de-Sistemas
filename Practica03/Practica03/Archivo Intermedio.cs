@@ -25,11 +25,11 @@ namespace Practica03
 
         public void cambiarText(int fila, int columna, string nuevoText)
         {
-            if(dataGridView1.Rows.Count<fila+1)
+            if (dataGridView1.Rows.Count < fila + 1)
             {
-                dataGridView1.Rows.Add();
+                dataGridView1.Rows.Add("", "", "", "", "");
             }
-            if(nuevoText=="u")
+            if (nuevoText == "u")
             {
                 dataGridView1.Rows[fila].Cells[columna].Value = " ";
             }
@@ -41,7 +41,7 @@ namespace Practica03
 
         public int tamanoArchivo()
         {
-            return Convert.ToInt32(dataGridView1.Rows[dataGridView1.Rows.Count-1].Cells[0].Value.ToString(), 16) - Convert.ToInt32(dataGridView1.Rows[0].Cells[0].Value.ToString(), 16);
+            return Convert.ToInt32(dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0].Value.ToString(), 16) - Convert.ToInt32(dataGridView1.Rows[0].Cells[0].Value.ToString(), 16);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -53,14 +53,45 @@ namespace Practica03
         {
             string CodOP = "";
             string dir = "0";
-            for(int i = 1; i<dataGridView1.Rows.Count;i++)
+            string operando = "";
+            bool directiva = false;
+            for (int i = 1; i < dataGridView1.Rows.Count; i++)
             {
+                directiva = false;
                 CodOP = "";
                 dir = "0";
+                operando = dataGridView1.Rows[i].Cells[3].Value.ToString();
                 switch (dataGridView1.Rows[i].Cells[2].Value.ToString())
                 {
+                    case "BYTE":
+                    case "BYTE/t":
+                        {
+                            if (operando[0] == 'X')
+                            {
+                                operando = operando.Substring(2);
+                                operando = operando.Substring(0, operando.Length - 1);
+                                if (operando.Length % 2 != 0)
+                                {
+                                    operando = "0" + operando;
+                                }
+                                dataGridView1.Rows[i].Cells[4].Value = operando;
+                            }
+                            else
+                            {
+                                operando = operando.Substring(2);
+                                operando = operando.Substring(0, operando.Length - 1);
+                                byte[] bytes = Encoding.ASCII.GetBytes(operando);
+                                foreach(byte b in bytes)
+                                {
+                                    dataGridView1.Rows[i].Cells[4].Value += b.ToString();
+                                }
+                            }
+                            directiva = true;
+                            break;
+                        }
                     case "ADD":
-                    case "ADD/t": CodOP = "18";
+                    case "ADD/t":
+                        CodOP = "18";
                         break;
                     case "AND":
                     case "AND/t":
@@ -125,6 +156,7 @@ namespace Practica03
                     case "RSUB":
                     case "RSUB/t":
                         dataGridView1.Rows[i].Cells[4].Value = "4C0000";
+                        directiva = true;
                         break;
                     case "STA":
                     case "STA/t":
@@ -162,22 +194,49 @@ namespace Practica03
                     case "WD/t":
                         CodOP = "DC";
                         break;
+                    case "RESW":
+                    case "RESW/t":
+                        directiva = true;
+                        break;
+                    case "RESB":
+                    case "RESB/t":
+                        directiva = true;
+                        break;
+                    case "WORD":
+                    case "WORD/t":
+                        directiva = true;
+                        break;
+                    case "END":
+                    case "END/t":
+                        directiva = true;
+                        break;
+                    default:
+                        dataGridView1.Rows[i].Cells[4].Value = "ERROR: INSTRUCCION INVALIDA";
+                        directiva = true;
+                        break;
                 }
-                string operando = dataGridView1.Rows[i].Cells[3].Value.ToString();
-                if (operando[operando.Length - 1] == 'X')
+                if (!directiva)
                 {
-                    operando = operando.Substring(0, operando.Length - 2);
-                    dir = "8000";
-                }
-                foreach (string line in TabSim.Split('\n'))
-                {
-                    string[] simbolos = line.Split(new char[] { ' ', '\t' });
-                    if (simbolos[0] == operando)
+                    if (operando[operando.Length - 1] == 'X')
                     {
-                        dir = (Convert.ToInt32(dir, 16) + Convert.ToInt32(simbolos[1], 16)).ToString("X");
+                        operando = operando.Substring(0, operando.Length - 2);
+                        dir = "8000";
                     }
+                    bool encontrado = false;
+                    foreach (string line in TabSim.Split('\n'))
+                    {
+                        string[] simbolos = line.Split(new char[] { ' ', '\t' });
+                        if (simbolos[0] == operando)
+                        {
+                            dir = (Convert.ToInt32(dir, 16) + Convert.ToInt32(simbolos[1], 16)).ToString("X");
+                            encontrado = true;
+                        }
+                    }
+                    if (encontrado)
+                        dataGridView1.Rows[i].Cells[4].Value = CodOP + dir;
+                    else
+                        dataGridView1.Rows[i].Cells[4].Value = CodOP + "FFFF ERROR: SIMBOLO NO EXISTE";
                 }
-                dataGridView1.Rows[i].Cells[4].Value = CodOP + dir;
             }
         }
 
