@@ -26,5 +26,11 @@ namespace Practica03
         {
             this.richTextBox1.Text += nuevoText;
         }
+
+        public string regresarText()
+        {
+            return this.richTextBox1.Text;
+        }
+
     }
 }
