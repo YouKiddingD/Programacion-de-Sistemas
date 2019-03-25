@@ -117,8 +117,9 @@
             // simularToolStripMenuItem
             // 
             this.simularToolStripMenuItem.Name = "simularToolStripMenuItem";
-            this.simularToolStripMenuItem.Size = new System.Drawing.Size(59, 23);
-            this.simularToolStripMenuItem.Text = "Simular";
+            this.simularToolStripMenuItem.Size = new System.Drawing.Size(54, 23);
+            this.simularToolStripMenuItem.Text = "Cargar";
+            this.simularToolStripMenuItem.Click += new System.EventHandler(this.simularToolStripMenuItem_Click);
             // 
             // ventanaToolStripMenuItem1
             // 
@@ -145,7 +146,7 @@
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Ensamblador";
             this.Text = "Ensamblador";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

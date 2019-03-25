@@ -72,3 +72,4 @@ C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programaci
 C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.csproj.CopyComplete
 C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.exe
 C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.pdb
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.MapaMemoria.resources

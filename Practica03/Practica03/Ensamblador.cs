@@ -20,7 +20,9 @@ namespace Practica03
         CodigoObjeto codObj;
         Errores errores;
         TablaSimbolos tamSimb;
+        MapaMemoria mapaMemoria;
         string nombreProg;
+        string progObjeto;
 
         public Ensamblador()
         {
@@ -96,7 +98,7 @@ namespace Practica03
             nombreProg = archInt.dataGridView1.Rows[0].Cells[1].Value.ToString().PadRight(6).Substring(0, 6);
             string dirInicio = archInt.dataGridView1.Rows[0].Cells[0].Value.ToString().PadLeft(6, '0');
             string longi = archInt.tamanoArchivo().ToString("X").PadLeft(6, '0');
-            string progObjeto = "H" + nombreProg + dirInicio + longi + "\n";
+            progObjeto = "H" + nombreProg + dirInicio + longi + "\n";
 
             int coutbytes = 0;
             string obj = "";
@@ -323,6 +325,14 @@ namespace Practica03
                 string createText = archfuente.regresarText();
                 File.WriteAllText(filePath, createText);
             }
+        }
+
+        private void simularToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MapaMemoria newMDIChild = new MapaMemoria();
+            mapaMemoria = newMDIChild;
+            mapaMemoria.cargar(progObjeto, archInt.tamanoArchivo());
+            mapaMemoria.Show();
         }
     }
 }
