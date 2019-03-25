@@ -32,5 +32,11 @@ namespace Practica03
             return this.richTextBox1.Text;
         }
 
+        public string regresaDir(string etiqueta)
+        {
+            int init = richTextBox1.Text.IndexOf(etiqueta) + etiqueta.Length + 1;
+            return init == -1 ? "FFFFFF" : richTextBox1.Text.Substring(init, 4);
+        }
+            
     }
 }
