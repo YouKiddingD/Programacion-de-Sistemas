@@ -64,5 +64,41 @@ namespace Practica03
                 dirCarga = (Convert.ToInt32(dirCarga, 16) + 16).ToString("X");
             }
         }
+
+        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            System.IO.StreamReader file = null;
+            string filePath = "";
+            string linea = "";
+            string progObj = "";
+            try
+            {
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.Filter = "Programa Objeto (*.obj)|*.obj";
+                    openFileDialog.FilterIndex = 2;
+                    openFileDialog.RestoreDirectory = true;
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        filePath = openFileDialog.FileName;
+                    }
+                }
+                file = new System.IO.StreamReader(filePath);
+                while ((linea = file.ReadLine()) != null)
+                {
+                    progObj += linea + '\n';
+                }
+                file.Close();
+
+                int tam = Convert.ToInt32(progObj.Substring(13,6).ToString(), 16);
+
+                cargar(progObj, tam);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine("Archivo inexistente");
+            }
+        }
     }
 }

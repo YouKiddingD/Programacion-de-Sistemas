@@ -22,7 +22,7 @@ namespace Practica03
         TablaSimbolos tamSimb;
         MapaMemoria mapaMemoria;
         string nombreProg;
-        string progObjeto;
+        string progObjeto = "";
 
         public Ensamblador()
         {
@@ -139,7 +139,7 @@ namespace Practica03
                         {
                             coutbytes = 0;
                             string tam = (regT.Substring(7, regT.Length - 7).Length / 2).ToString("X");
-                            progObjeto += regT.Substring(0, 7) + tam.PadLeft(2,'0') + regT.Substring(7, regT.Length - 7) + "\n";
+                            progObjeto += regT.Substring(0, 7) + tam.PadLeft(2, '0') + regT.Substring(7, regT.Length - 7) + "\n";
                             regT = "";
                         }
                     }
@@ -148,16 +148,16 @@ namespace Practica03
                         obj = "";
                     }
                 }
-                else if(regT != "")
+                else if (regT != "")
                 {
                     coutbytes = 0;
-                    string tam = (regT.Substring(7, regT.Length-7).Length / 2).ToString("X");
+                    string tam = (regT.Substring(7, regT.Length - 7).Length / 2).ToString("X");
                     progObjeto += regT.Substring(0, 7) + tam.PadLeft(2, '0') + regT.Substring(7, regT.Length - 7) + "\n";
                     regT = "";
                 }
             }
 
-            string dirEnd = tamSimb.regresaDir(archInt.dataGridView1.Rows[archInt.dataGridView1.RowCount-1].Cells[3].Value.ToString());
+            string dirEnd = tamSimb.regresaDir(archInt.dataGridView1.Rows[archInt.dataGridView1.RowCount - 1].Cells[3].Value.ToString());
             progObjeto += "E" + dirEnd.PadLeft(6, '0');
 
             codObj.cambiarText(progObjeto, filePath);
@@ -331,7 +331,8 @@ namespace Practica03
         {
             MapaMemoria newMDIChild = new MapaMemoria();
             mapaMemoria = newMDIChild;
-            mapaMemoria.cargar(progObjeto, archInt.tamanoArchivo());
+            if (progObjeto != "")
+                mapaMemoria.cargar(progObjeto, archInt.tamanoArchivo());
             mapaMemoria.Show();
         }
     }
