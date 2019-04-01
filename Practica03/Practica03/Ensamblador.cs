@@ -160,7 +160,7 @@ namespace Practica03
             string dirEnd = tamSimb.regresaDir(archInt.dataGridView1.Rows[archInt.dataGridView1.RowCount-1].Cells[3].Value.ToString());
             progObjeto += "E" + dirEnd.PadLeft(6, '0');
 
-            codObj.cambiarText(progObjeto);
+            codObj.cambiarText(progObjeto, filePath);
 
         }
 

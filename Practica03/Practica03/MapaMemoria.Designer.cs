@@ -70,102 +70,135 @@
             this.D,
             this.E,
             this.F});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 450);
+            this.dataGridView1.Size = new System.Drawing.Size(615, 339);
             this.dataGridView1.TabIndex = 0;
             // 
             // Direccion
             // 
             this.Direccion.HeaderText = "";
             this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            this.Direccion.Width = 60;
             // 
             // Cero
             // 
             this.Cero.HeaderText = "0";
             this.Cero.Name = "Cero";
+            this.Cero.ReadOnly = true;
+            this.Cero.Width = 25;
             // 
             // Uno
             // 
             this.Uno.HeaderText = "1";
             this.Uno.Name = "Uno";
+            this.Uno.ReadOnly = true;
+            this.Uno.Width = 25;
             // 
             // Dos
             // 
             this.Dos.HeaderText = "2";
             this.Dos.Name = "Dos";
+            this.Dos.ReadOnly = true;
+            this.Dos.Width = 25;
             // 
             // Tres
             // 
             this.Tres.HeaderText = "3";
             this.Tres.Name = "Tres";
+            this.Tres.ReadOnly = true;
+            this.Tres.Width = 25;
             // 
             // Cuatro
             // 
             this.Cuatro.HeaderText = "4";
             this.Cuatro.Name = "Cuatro";
+            this.Cuatro.ReadOnly = true;
+            this.Cuatro.Width = 25;
             // 
             // Cinco
             // 
             this.Cinco.HeaderText = "5";
             this.Cinco.Name = "Cinco";
+            this.Cinco.ReadOnly = true;
+            this.Cinco.Width = 25;
             // 
             // Seis
             // 
             this.Seis.HeaderText = "6";
             this.Seis.Name = "Seis";
+            this.Seis.ReadOnly = true;
+            this.Seis.Width = 25;
             // 
             // Siete
             // 
             this.Siete.HeaderText = "7";
             this.Siete.Name = "Siete";
+            this.Siete.ReadOnly = true;
+            this.Siete.Width = 25;
             // 
             // Ocho
             // 
             this.Ocho.HeaderText = "8";
             this.Ocho.Name = "Ocho";
+            this.Ocho.ReadOnly = true;
+            this.Ocho.Width = 25;
             // 
             // Nueve
             // 
             this.Nueve.HeaderText = "9";
             this.Nueve.Name = "Nueve";
+            this.Nueve.ReadOnly = true;
+            this.Nueve.Width = 25;
             // 
             // A
             // 
             this.A.HeaderText = "A";
             this.A.Name = "A";
+            this.A.ReadOnly = true;
+            this.A.Width = 25;
             // 
             // B
             // 
             this.B.HeaderText = "B";
             this.B.Name = "B";
+            this.B.ReadOnly = true;
+            this.B.Width = 25;
             // 
             // C
             // 
             this.C.HeaderText = "C";
             this.C.Name = "C";
+            this.C.ReadOnly = true;
+            this.C.Width = 25;
             // 
             // D
             // 
             this.D.HeaderText = "D";
             this.D.Name = "D";
+            this.D.ReadOnly = true;
+            this.D.Width = 25;
             // 
             // E
             // 
             this.E.HeaderText = "E";
             this.E.Name = "E";
+            this.E.ReadOnly = true;
+            this.E.Width = 25;
             // 
             // F
             // 
             this.F.HeaderText = "F";
             this.F.Name = "F";
+            this.F.ReadOnly = true;
+            this.F.Width = 25;
             // 
             // MapaMemoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(882, 501);
             this.Controls.Add(this.dataGridView1);
             this.Name = "MapaMemoria";
             this.Text = "MapaMemoria";
