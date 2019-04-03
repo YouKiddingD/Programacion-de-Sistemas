@@ -53,6 +53,9 @@ namespace Practica03
                 }
 
             }
+
+            initRegistros();
+
         }
 
         public void initDirecciones(string dirCarga, int tam)
@@ -99,6 +102,21 @@ namespace Practica03
             {
                 System.Console.WriteLine("Archivo inexistente");
             }
+        }
+
+        private void initRegistros()
+        {
+            dataGridView2.Rows.Add("CP", "FFFFFF");
+            dataGridView2.Rows.Add("A", "FFFFFF");
+            dataGridView2.Rows.Add("X", "FFFFFF");
+            dataGridView2.Rows.Add("L", "FFFFFF");
+            dataGridView2.Rows.Add("SW", "FFFFFF");
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
