@@ -52,9 +52,35 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.CP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Instruccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodOp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ModoDir = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Operando = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Efecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtDirCarga = new System.Windows.Forms.TextBox();
+            this.txtLong = new System.Windows.Forms.TextBox();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnEjecutar = new System.Windows.Forms.Button();
+            this.btnEjecutarTodo = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numLineas = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numLineas)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -78,9 +104,9 @@
             this.D,
             this.E,
             this.F});
-            this.dataGridView1.Location = new System.Drawing.Point(0, 27);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(526, 472);
+            this.dataGridView1.Size = new System.Drawing.Size(529, 387);
             this.dataGridView1.TabIndex = 0;
             // 
             // Direccion
@@ -223,7 +249,7 @@
             // abrirToolStripMenuItem
             // 
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.abrirToolStripMenuItem.Text = "Abrir";
             this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
             // 
@@ -233,9 +259,9 @@
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Registro,
             this.Valor});
-            this.dataGridView2.Location = new System.Drawing.Point(532, 27);
+            this.dataGridView2.Location = new System.Drawing.Point(6, 19);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(338, 155);
+            this.dataGridView2.Size = new System.Drawing.Size(299, 155);
             this.dataGridView2.TabIndex = 2;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -249,21 +275,215 @@
             this.Valor.HeaderText = "Valor";
             this.Valor.Name = "Valor";
             // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CP,
+            this.Instruccion,
+            this.CodOp,
+            this.ModoDir,
+            this.Operando,
+            this.Efecto});
+            this.dataGridView3.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(846, 194);
+            this.dataGridView3.TabIndex = 3;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 27);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(541, 413);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Mapa de Memoria";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dataGridView2);
+            this.groupBox2.Location = new System.Drawing.Point(559, 27);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(311, 183);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Registros";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.numLineas);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.btnEjecutarTodo);
+            this.groupBox3.Controls.Add(this.btnEjecutar);
+            this.groupBox3.Controls.Add(this.btnLimpiar);
+            this.groupBox3.Controls.Add(this.txtLong);
+            this.groupBox3.Controls.Add(this.txtDirCarga);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Location = new System.Drawing.Point(559, 216);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(311, 224);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "General";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Direccion de Carga:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Longitud: ";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.dataGridView3);
+            this.groupBox4.Location = new System.Drawing.Point(12, 446);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(858, 219);
+            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Ejecucion";
+            // 
+            // CP
+            // 
+            this.CP.HeaderText = "CP";
+            this.CP.Name = "CP";
+            this.CP.ReadOnly = true;
+            // 
+            // Instruccion
+            // 
+            this.Instruccion.HeaderText = "Instruccion";
+            this.Instruccion.Name = "Instruccion";
+            this.Instruccion.ReadOnly = true;
+            // 
+            // CodOp
+            // 
+            this.CodOp.HeaderText = "CodOp";
+            this.CodOp.Name = "CodOp";
+            this.CodOp.ReadOnly = true;
+            // 
+            // ModoDir
+            // 
+            this.ModoDir.HeaderText = "ModoDir";
+            this.ModoDir.Name = "ModoDir";
+            this.ModoDir.ReadOnly = true;
+            // 
+            // Operando
+            // 
+            this.Operando.HeaderText = "Operando";
+            this.Operando.Name = "Operando";
+            this.Operando.ReadOnly = true;
+            // 
+            // Efecto
+            // 
+            this.Efecto.HeaderText = "Efecto";
+            this.Efecto.Name = "Efecto";
+            this.Efecto.ReadOnly = true;
+            // 
+            // txtDirCarga
+            // 
+            this.txtDirCarga.Location = new System.Drawing.Point(113, 26);
+            this.txtDirCarga.Name = "txtDirCarga";
+            this.txtDirCarga.Size = new System.Drawing.Size(100, 20);
+            this.txtDirCarga.TabIndex = 8;
+            // 
+            // txtLong
+            // 
+            this.txtLong.Location = new System.Drawing.Point(113, 49);
+            this.txtLong.Name = "txtLong";
+            this.txtLong.Size = new System.Drawing.Size(100, 20);
+            this.txtLong.TabIndex = 9;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(230, 195);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.TabIndex = 10;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            // 
+            // btnEjecutar
+            // 
+            this.btnEjecutar.Location = new System.Drawing.Point(230, 162);
+            this.btnEjecutar.Name = "btnEjecutar";
+            this.btnEjecutar.Size = new System.Drawing.Size(75, 23);
+            this.btnEjecutar.TabIndex = 11;
+            this.btnEjecutar.Text = "Ejecutar";
+            this.btnEjecutar.UseVisualStyleBackColor = true;
+            // 
+            // btnEjecutarTodo
+            // 
+            this.btnEjecutarTodo.Location = new System.Drawing.Point(9, 195);
+            this.btnEjecutarTodo.Name = "btnEjecutarTodo";
+            this.btnEjecutarTodo.Size = new System.Drawing.Size(100, 23);
+            this.btnEjecutarTodo.TabIndex = 12;
+            this.btnEjecutarTodo.Text = "Ejecutar Todo";
+            this.btnEjecutarTodo.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 162);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(94, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Lineas a ejecutar: ";
+            // 
+            // numLineas
+            // 
+            this.numLineas.Location = new System.Drawing.Point(113, 162);
+            this.numLineas.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numLineas.Name = "numLineas";
+            this.numLineas.Size = new System.Drawing.Size(100, 20);
+            this.numLineas.TabIndex = 14;
+            this.numLineas.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // MapaMemoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 501);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(882, 667);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox4);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MapaMemoria";
-            this.Text = "MapaMemoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Simulador";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numLineas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,5 +515,25 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Registro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Instruccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodOp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ModoDir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Operando;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Efecto;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnEjecutarTodo;
+        private System.Windows.Forms.Button btnEjecutar;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.TextBox txtLong;
+        private System.Windows.Forms.TextBox txtDirCarga;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.NumericUpDown numLineas;
+        private System.Windows.Forms.Label label3;
     }
 }
