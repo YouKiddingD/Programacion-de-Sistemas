@@ -59,12 +59,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.CP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Instruccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodOp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ModoDir = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Operando = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Efecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDirCarga = new System.Windows.Forms.TextBox();
             this.txtLong = new System.Windows.Forms.TextBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
@@ -72,6 +66,12 @@
             this.btnEjecutarTodo = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.numLineas = new System.Windows.Forms.NumericUpDown();
+            this.CP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Instruccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodOp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ModoDir = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Operando = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Efecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -356,42 +356,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Ejecucion";
             // 
-            // CP
-            // 
-            this.CP.HeaderText = "CP";
-            this.CP.Name = "CP";
-            this.CP.ReadOnly = true;
-            // 
-            // Instruccion
-            // 
-            this.Instruccion.HeaderText = "Instruccion";
-            this.Instruccion.Name = "Instruccion";
-            this.Instruccion.ReadOnly = true;
-            // 
-            // CodOp
-            // 
-            this.CodOp.HeaderText = "CodOp";
-            this.CodOp.Name = "CodOp";
-            this.CodOp.ReadOnly = true;
-            // 
-            // ModoDir
-            // 
-            this.ModoDir.HeaderText = "ModoDir";
-            this.ModoDir.Name = "ModoDir";
-            this.ModoDir.ReadOnly = true;
-            // 
-            // Operando
-            // 
-            this.Operando.HeaderText = "Operando";
-            this.Operando.Name = "Operando";
-            this.Operando.ReadOnly = true;
-            // 
-            // Efecto
-            // 
-            this.Efecto.HeaderText = "Efecto";
-            this.Efecto.Name = "Efecto";
-            this.Efecto.ReadOnly = true;
-            // 
             // txtDirCarga
             // 
             this.txtDirCarga.Location = new System.Drawing.Point(113, 26);
@@ -460,6 +424,48 @@
             0,
             0});
             // 
+            // CP
+            // 
+            this.CP.HeaderText = "CP";
+            this.CP.Name = "CP";
+            this.CP.ReadOnly = true;
+            this.CP.Width = 60;
+            // 
+            // Instruccion
+            // 
+            this.Instruccion.HeaderText = "Instruccion";
+            this.Instruccion.Name = "Instruccion";
+            this.Instruccion.ReadOnly = true;
+            this.Instruccion.Width = 80;
+            // 
+            // CodOp
+            // 
+            this.CodOp.HeaderText = "CodOp";
+            this.CodOp.Name = "CodOp";
+            this.CodOp.ReadOnly = true;
+            this.CodOp.Width = 50;
+            // 
+            // ModoDir
+            // 
+            this.ModoDir.HeaderText = "ModoDir";
+            this.ModoDir.Name = "ModoDir";
+            this.ModoDir.ReadOnly = true;
+            this.ModoDir.Width = 60;
+            // 
+            // Operando
+            // 
+            this.Operando.HeaderText = "Operando";
+            this.Operando.Name = "Operando";
+            this.Operando.ReadOnly = true;
+            this.Operando.Width = 60;
+            // 
+            // Efecto
+            // 
+            this.Efecto.HeaderText = "Efecto";
+            this.Efecto.Name = "Efecto";
+            this.Efecto.ReadOnly = true;
+            this.Efecto.Width = 400;
+            // 
             // MapaMemoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -517,12 +523,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Registro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Instruccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodOp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ModoDir;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Operando;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Efecto;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -536,5 +536,11 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.NumericUpDown numLineas;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Instruccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodOp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ModoDir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Operando;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Efecto;
     }
 }

@@ -251,6 +251,62 @@ namespace Practica03
         {
             string efecto = "";
 
+            switch (codOp)
+            {
+                case "18":
+                    efecto = "A<-(A)+(m..m+2)"; break;
+                case "40":
+                    efecto = "A<-(A)&(m..m+2)"; break;
+                case "28":
+                    efecto = "A:(m..m+2)"; break;
+                case "24":
+                    efecto = "A<-(A)/(m..m+2)"; break;
+                case "3C":
+                    efecto = "CP<-m"; break;
+                case "30":
+                    efecto = "CP<-m si CC esta en ="; break;
+                case "34":
+                    efecto = "CP<-m si CC esta en >"; break;
+                case "38":
+                    efecto = "CP<-m si CC esta en <"; break;
+                case "48":
+                    efecto = "L<-(CP);  CP<-m"; break;
+                case "00":
+                    efecto = "A<-(m..m+2)"; break;
+                case "50":
+                    efecto = "A[el byte de mas a la derecha]<-(m)"; break;
+                case "08":
+                    efecto = "L<-(m..m+2)"; break;
+                case "04":
+                    efecto = "X<-(m..m+2)"; break;
+                case "20":
+                    efecto = "A<-(A)*(m..m+2)"; break;
+                case "44":
+                    efecto = "A<-(A)|(m..m+2)"; break;
+                case "D8":
+                    efecto = "A[el byte de mas a la derecha]<-datos del dispositivo especificado por (m)"; break;
+                case "4C":
+                    efecto = "CP<-(L)"; break;
+                case "0C":
+                    efecto = "m..m+2<-(A)"; break;
+                case "54":
+                    efecto = "m<-A[el byte de mas a la derecha]"; break;
+                case "14":
+                    efecto = "m..m+2<-(L)"; break;
+                case "E8":
+                    efecto = "m..m+2<-(SW)"; break;
+                case "10":
+                    efecto = "m..m+2<-(X)"; break;
+                case "1C":
+                    efecto = "A<-(A)-(m..m+2)"; break;
+                case "E0":
+                    efecto = "Prueba el dispositivo especificado por (m). Modifica el codigo de condicion para indicar el resultado de la prueba. < listo para enviar o recibir, = ocupado, > no esta operativo"; break;
+                case "2C":
+                    efecto = "X<-(X)+1; (X):(m..m+2)"; break;
+                case "DC":
+                    efecto = "Dispositivo especificado por (m)<-(A)[el byte de mas a la derecha]"; break;
+            }
+
             return efecto;
         }
 
