@@ -121,8 +121,137 @@ namespace Practica03
 
         private void initgeneral()
         {
-            txtDirCarga.Text = dirCargaHex;
-            txtLong.Text = tamHex.ToString();
+            txtDirCarga.Text = dirCargaHex.PadLeft(6, '0');
+            txtLong.Text = tamHex.ToString().PadLeft(6, '0');
+        }
+
+        private void btnEjecutar_Click(object sender, EventArgs e)
+        {
+            //Se conoce el valor del contador
+            string CPHex = dataGridView2.Rows[0].Cells[1].Value.ToString();
+            int CP = Convert.ToInt32(CPHex, 16);
+            //3 primeros digitos del CP
+            string dirCP1 = CPHex.Substring(0, 5);
+            //Ultimo digito del CP
+            string dirCP2 = CPHex.Substring(5, 1);
+            int indexCell = Convert.ToInt32(dirCP2, 16) + 1;
+
+            //Se leen 3 bytes
+            string instruccion = getInstruccion(dirCP1, indexCell);
+
+            //Se actualiza el valor del CP
+            string CPHexAux = CPHex;
+            CP += 3;
+            CPHex = CP.ToString("X").PadLeft(6, '0');
+            dataGridView2.Rows[0].Cells[1].Value = CPHex;
+
+            //Se interpreta la instruccion
+            string codOp = instruccion.Substring(0, 2);
+            string nemonico = getNemonico(codOp);
+            string efecto = getEfecto(codOp);
+            string operando = instruccion.Substring(2, 4);
+
+            dataGridView3.Rows.Add(CPHexAux, nemonico, codOp, "", operando, efecto);
+
+            //Se aplica el efecto
+
+        }
+
+        private string getInstruccion(string dirCP1, int indexCell)
+        {
+            string instruccion = "";
+
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                string currentDir = dataGridView1.Rows[i].Cells[0].Value.ToString();
+
+                if (currentDir.Substring(0, 5) == dirCP1)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        instruccion += dataGridView1.Rows[i].Cells[indexCell].Value.ToString();
+                        indexCell++;
+                        if (indexCell > 16)
+                        {
+                            i++;
+                            indexCell = 1;
+                        }
+                    }
+                    break;
+                }
+            }
+
+            return instruccion;
+        }
+
+        private string getNemonico(string codOp)
+        {
+            string instruccion = "";
+
+            switch (codOp)
+            {
+                case "18":
+                    instruccion = "ADD"; break;
+                case "40":
+                    instruccion = "AND"; break;
+                case "28":
+                    instruccion = "COMP"; break;
+                case "24":
+                    instruccion = "DIV"; break;
+                case "3C":
+                    instruccion = "J"; break;
+                case "30":
+                    instruccion = "JEQ"; break;
+                case "34":
+                    instruccion = "JGT"; break;
+                case "38":
+                    instruccion = "JLT"; break;
+                case "48":
+                    instruccion = "JSUB"; break;
+                case "00":
+                    instruccion = "LDA"; break;
+                case "50":
+                    instruccion = "LDCH"; break;
+                case "08":
+                    instruccion = "LDL"; break;
+                case "04":
+                    instruccion = "LDX"; break;
+                case "20":
+                    instruccion = "MUL"; break;
+                case "44":
+                    instruccion = "OR"; break;
+                case "D8":
+                    instruccion = "RD"; break;
+                case "4C":
+                    instruccion = "RSUB"; break;
+                case "0C":
+                    instruccion = "STA"; break;
+                case "54":
+                    instruccion = "STCH"; break;
+                case "14":
+                    instruccion = "STL"; break;
+                case "E8":
+                    instruccion = "STSW"; break;
+                case "10":
+                    instruccion = "STX"; break;
+                case "1C":
+                    instruccion = "SUB"; break;
+                case "E0":
+                    instruccion = "TD"; break;
+                case "2C":
+                    instruccion = "TIX"; break;
+                case "DC":
+                    instruccion = "WD"; break;
+            }
+
+            return instruccion;
+        }
+
+        private string getEfecto(string codOp)
+        {
+            string efecto = "";
+
+            return efecto;
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)

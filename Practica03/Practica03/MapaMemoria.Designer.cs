@@ -423,6 +423,7 @@
             this.btnEjecutar.TabIndex = 11;
             this.btnEjecutar.Text = "Ejecutar";
             this.btnEjecutar.UseVisualStyleBackColor = true;
+            this.btnEjecutar.Click += new System.EventHandler(this.btnEjecutar_Click);
             // 
             // btnEjecutarTodo
             // 
