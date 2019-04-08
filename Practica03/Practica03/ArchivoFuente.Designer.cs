@@ -35,9 +35,10 @@
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.richTextBox1.Location = new System.Drawing.Point(54, 0);
+            this.richTextBox1.Location = new System.Drawing.Point(40, 0);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(908, 433);
+            this.richTextBox1.Size = new System.Drawing.Size(682, 301);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.VScroll += new System.EventHandler(this.richTextBox1_VScroll);
@@ -45,19 +46,21 @@
             // 
             // numberLabel
             // 
-            this.numberLabel.Location = new System.Drawing.Point(2, 3);
+            this.numberLabel.Location = new System.Drawing.Point(2, 2);
+            this.numberLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.numberLabel.Name = "numberLabel";
-            this.numberLabel.Size = new System.Drawing.Size(46, 433);
+            this.numberLabel.Size = new System.Drawing.Size(34, 352);
             this.numberLabel.TabIndex = 1;
             // 
             // ArchivoFuente
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 433);
+            this.ClientSize = new System.Drawing.Size(722, 301);
             this.Controls.Add(this.numberLabel);
             this.Controls.Add(this.richTextBox1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ArchivoFuente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "ArchivoFuente";

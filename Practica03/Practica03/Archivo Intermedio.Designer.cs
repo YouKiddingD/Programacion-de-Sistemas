@@ -52,7 +52,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(722, 352);
+            this.dataGridView1.Size = new System.Drawing.Size(722, 301);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -90,9 +90,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(722, 352);
+            this.ClientSize = new System.Drawing.Size(722, 301);
             this.Controls.Add(this.dataGridView1);
-            this.Location = new System.Drawing.Point(0, 390);
+            this.Location = new System.Drawing.Point(0, 340);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Archivo_Intermedio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

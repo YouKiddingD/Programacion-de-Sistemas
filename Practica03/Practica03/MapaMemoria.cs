@@ -12,17 +12,25 @@ namespace Practica03
 {
     public partial class MapaMemoria : Form
     {
+        int tam;
+        string tamHex;
+        string dirCargaHex;
+
         public MapaMemoria()
         {
             InitializeComponent();
         }
 
-        public void cargar(string progObj, int tam)
+        public void cargar(string progObj, int tamArch)
         {
             string[] registros = progObj.Split('\n');
             string dirCarga = registros[0].Substring(7, 6);
 
-            initDirecciones(dirCarga, tam);
+            dirCargaHex = dirCarga;
+            tam = tamArch;
+            tamHex = tamArch.ToString("X");
+
+            initDirecciones(dirCarga);
 
             for (int i = 1; i < registros.Length - 1; i++)
             {
@@ -33,7 +41,7 @@ namespace Practica03
                     if (dirT == dirCarga.Substring(0, 5))
                     {
                         int ultimo = Convert.ToInt32(dirCarga.Last().ToString(), 16);
-                        for (int k = 9; k < registros[i].Length-1; k += 2)
+                        for (int k = 9; k < registros[i].Length - 1; k += 2)
                         {
                             if (ultimo < 16)
                             {
@@ -55,10 +63,10 @@ namespace Practica03
             }
 
             initRegistros();
-
+            initgeneral();
         }
 
-        public void initDirecciones(string dirCarga, int tam)
+        public void initDirecciones(string dirCarga)
         {
             int dir = Convert.ToInt32(dirCarga, 16);
             for (int i = dir; i < tam + dir; i += 16)
@@ -94,9 +102,7 @@ namespace Practica03
                 }
                 file.Close();
 
-                int tam = Convert.ToInt32(progObj.Substring(13,6).ToString(), 16);
-
-                cargar(progObj, tam);
+                cargar(progObj, Convert.ToInt32(progObj.Substring(13, 6).ToString(), 16));
             }
             catch (Exception ex)
             {
@@ -106,12 +112,17 @@ namespace Practica03
 
         private void initRegistros()
         {
-            dataGridView2.Rows.Add("CP", "FFFFFF");
+            dataGridView2.Rows.Add("CP", dirCargaHex);
             dataGridView2.Rows.Add("A", "FFFFFF");
             dataGridView2.Rows.Add("X", "FFFFFF");
             dataGridView2.Rows.Add("L", "FFFFFF");
             dataGridView2.Rows.Add("SW", "FFFFFF");
+        }
 
+        private void initgeneral()
+        {
+            txtDirCarga.Text = dirCargaHex;
+            txtLong.Text = tamHex.ToString();
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
