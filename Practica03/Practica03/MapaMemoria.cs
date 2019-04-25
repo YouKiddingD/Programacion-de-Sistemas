@@ -53,6 +53,7 @@ namespace Practica03
                                 ultimo = 0;
                                 j++;
                                 dataGridView1.Rows[j].Cells[ultimo + 1].Value = registros[i].Substring(k, 2);
+                                ultimo++;
                             }
                         }
 
@@ -71,7 +72,7 @@ namespace Practica03
             int dir = Convert.ToInt32(dirCarga, 16);
             for (int i = dir; i < tam + dir; i += 16)
             {
-                dataGridView1.Rows.Add(dirCarga.PadLeft(6, '0'), "FF", "FF", "FF", "FF", "FF", "FF", "FF", "FF", "FF", "FF", "FF", "FF", "FF", "FF", "FF", "FF");
+                dataGridView1.Rows.Add(dirCarga.PadLeft(6, '0'), "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ");
                 dirCarga = (Convert.ToInt32(dirCarga, 16) + 16).ToString("X");
             }
         }
@@ -174,7 +175,7 @@ namespace Practica03
             string res = "";
             if (Convert.ToInt32(HEX1, 16) > Convert.ToInt32(HEX2, 16))
                 res = ">";
-            else if(Convert.ToInt32(HEX1, 16) < Convert.ToInt32(HEX2, 16))
+            else if (Convert.ToInt32(HEX1, 16) < Convert.ToInt32(HEX2, 16))
                 res = "<";
             else
                 res = "=";
@@ -206,15 +207,22 @@ namespace Practica03
                 }
             }
 
+            if (instruccion[2] == ' ')
+            {
+                instruccion = "000000";
+            }
             return instruccion;
         }
 
         private void set3Bytes(string dir, string value)
         {
             string dirCP1 = dir.PadLeft(6, '0').Substring(0, 5);
-            int indexCell = Convert.ToInt32(dir.PadLeft(6, '0').Substring(5, 1)) + 1;
-
-            for (int i = 0; i < dataGridView1.RowCount; i++)
+            int indexCell = Convert.ToInt32((dir.PadLeft(6, '0').Substring(5, 1)), 16) + 1;
+            if (Convert.ToInt32(dirCP1, 16) < Convert.ToInt32(dirCargaHex, 16) || Convert.ToInt32(dirCP1, 16) > Convert.ToInt32(dirCargaHex, 16) + tam)
+            {
+                MessageBox.Show("CP fuera de rango de memoria");
+            }
+            for (int i = 0; i < dataGridView1.RowCount - 1; i++)
             {
                 string currentDir = dataGridView1.Rows[i].Cells[0].Value.ToString();
 
@@ -222,7 +230,7 @@ namespace Practica03
                 {
                     for (int j = 0; j < 3; j++)
                     {
-                        dataGridView1.Rows[i].Cells[indexCell].Value = value.Substring(i * 2, 2);
+                        dataGridView1.Rows[i].Cells[indexCell].Value = value.Substring(j * 2, 2);
                         indexCell++;
                         if (indexCell > 16)
                         {
@@ -230,6 +238,23 @@ namespace Practica03
                             indexCell = 1;
                         }
                     }
+                    break;
+                }
+            }
+        }
+
+        private void set1Bytes(string dir, string value)
+        {
+            string dirCP1 = dir.PadLeft(6, '0').Substring(0, 5);
+            int indexCell = Convert.ToInt32((dir.PadLeft(6, '0').Substring(5, 1)), 16) + 1;
+
+            for (int i = 0; i < dataGridView1.RowCount - 1; i++)
+            {
+                string currentDir = dataGridView1.Rows[i].Cells[0].Value.ToString();
+
+                if (currentDir.Substring(0, 5) == dirCP1)
+                {
+                    dataGridView1.Rows[i].Cells[indexCell].Value = value;
                     break;
                 }
             }
@@ -379,69 +404,91 @@ namespace Practica03
             switch (codOp)
             {
                 case "18":
-                    data = (Convert.ToInt32(currentA, 16) + Convert.ToInt32(get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1)) + 1), 16)).ToString("X");
+                    data = (Convert.ToInt32(currentA, 16) + Convert.ToInt32(get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1), 16)).ToString("X").PadLeft(6, '0');
                     dataGridView2.Rows[1].Cells[1].Value = data;
                     break;
                 case "40":
+                    data = (Convert.ToInt32(dataGridView2.Rows[1].Cells[1].Value.ToString(), 16) & Convert.ToInt32(get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1), 16)).ToString();
+                    dataGridView2.Rows[1].Cells[1].Value = data;
                     efecto = "A<-(A)&(m..m+2)"; break;
                 case "28":
+                    compHEX(dataGridView2.Rows[1].Cells[1].Value.ToString(), get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1));
                     efecto = "A:(m..m+2)"; break;
                 case "24":
+                    dataGridView2.Rows[1].Cells[1].Value = (Convert.ToInt32(get3Bytes(dataGridView2.Rows[1].Cells[1].Value.ToString().PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(dataGridView2.Rows[1].Cells[1].Value.ToString().PadLeft(6, '0').Substring(5, 1), 16) + 1), 16) / Convert.ToInt32(get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1), 16)).ToString("X");
                     efecto = "A<-(A)/(m..m+2)"; break;
                 case "3C":
+                    dataGridView2.Rows[0].Cells[1].Value = operando.PadLeft(6, '0');
                     efecto = "CP<-m"; break;
                 case "30":
+                    dataGridView2.Rows[0].Cells[1].Value = currentSW == "=" ? operando.PadLeft(6, '0') : currentCP.PadLeft(6, '0');
                     efecto = "CP<-m si CC esta en ="; break;
                 case "34":
+                    dataGridView2.Rows[0].Cells[1].Value = currentSW == ">" ? operando.PadLeft(6, '0') : currentCP.PadLeft(6, '0');
                     efecto = "CP<-m si CC esta en >"; break;
                 case "38":
                     dataGridView2.Rows[0].Cells[1].Value = currentSW == "<" ? operando.PadLeft(6, '0') : currentCP.PadLeft(6, '0');
                     break;
                 case "48":
+                    dataGridView2.Rows[3].Cells[1].Value = get3Bytes(dataGridView2.Rows[0].Cells[1].Value.ToString().PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(dataGridView2.Rows[0].Cells[1].Value.ToString().PadLeft(6, '0').Substring(5, 1), 16) + 1);
+                    dataGridView2.Rows[0].Cells[1].Value = operando.PadLeft(6, '0');
                     efecto = "L<-(CP);  CP<-m"; break;
                 case "00":
-                    data = get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1)) + 1);
+                    data = get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1);
                     dataGridView2.Rows[1].Cells[1].Value = data;
                     break;
                 case "50":
                     efecto = "A[el byte de mas a la derecha]<-(m)"; break;
                 case "08":
+                    dataGridView2.Rows[3].Cells[1].Value = get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1);
                     efecto = "L<-(m..m+2)"; break;
                 case "04":
-                    data = get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1)) + 1);
+                    data = get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1);
                     dataGridView2.Rows[2].Cells[1].Value = data;
                     break;
                 case "20":
+                    dataGridView2.Rows[1].Cells[1].Value = (Convert.ToInt32(get3Bytes(dataGridView2.Rows[1].Cells[1].Value.ToString().PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(dataGridView2.Rows[1].Cells[1].Value.ToString().PadLeft(6, '0').Substring(5, 1), 16) + 1),16)*Convert.ToInt32(get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1),16)).ToString("X");
                     efecto = "A<-(A)*(m..m+2)"; break;
                 case "44":
+                    dataGridView2.Rows[1].Cells[1].Value = (Convert.ToInt32(get3Bytes(dataGridView2.Rows[1].Cells[1].Value.ToString().PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(dataGridView2.Rows[1].Cells[1].Value.ToString().PadLeft(6, '0').Substring(5, 1), 16) + 1), 16) | Convert.ToInt32(get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1), 16)).ToString("X");
                     efecto = "A<-(A)|(m..m+2)"; break;
                 case "D8":
                     efecto = "A[el byte de mas a la derecha]<-datos del dispositivo especificado por (m)"; break;
                 case "4C":
-                    dataGridView2.Rows[0].Cells[1].Value = get3Bytes(currentL.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(currentL.PadLeft(6, '0').Substring(5, 1)) + 1);
+                    dataGridView2.Rows[0].Cells[1].Value = get3Bytes(currentL.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(currentL.PadLeft(6, '0').Substring(5, 1), 16) + 1);
                     break;
                 case "0C":
                     set3Bytes(operando, currentA);
                     break;
                 case "54":
-                    efecto = "m<-A[el byte de mas a la derecha]"; break;
+                    efecto = "m<-A[el byte de mas a la derecha]";
+                    set1Bytes(operando,currentA.Substring(4,2));
+                    break;
                 case "14":
+                    set3Bytes(operando, currentL);
                     efecto = "m..m+2<-(L)"; break;
                 case "E8":
+                    set3Bytes(operando, currentSW);
                     efecto = "m..m+2<-(SW)"; break;
                 case "10":
+                    set3Bytes(operando, currentX);
                     efecto = "m..m+2<-(X)"; break;
                 case "1C":
+                    dataGridView2.Rows[1].Cells[1].Value = (Convert.ToInt32(get3Bytes(dataGridView2.Rows[1].Cells[1].Value.ToString().PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(dataGridView2.Rows[1].Cells[1].Value.ToString().PadLeft(6, '0').Substring(5, 1), 16) + 1), 16) - Convert.ToInt32(get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1), 16)).ToString("X");
                     efecto = "A<-(A)-(m..m+2)"; break;
                 case "E0":
                     efecto = "Prueba el dispositivo especificado por (m). Modifica el codigo de condicion para indicar el resultado de la prueba. < listo para enviar o recibir, = ocupado, > no esta operativo"; break;
                 case "2C":
                     dataGridView2.Rows[2].Cells[1].Value = sumaHEX(dataGridView2.Rows[2].Cells[1].Value.ToString(), "1").PadLeft(6, '0');
                     currentX = dataGridView2.Rows[2].Cells[1].Value.ToString();
-                    dataGridView2.Rows[4].Cells[1].Value = compHEX(currentX, get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1)) + 1));
+                    dataGridView2.Rows[4].Cells[1].Value = compHEX(currentX, get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1));
                     break;
                 case "DC":
                     efecto = "Dispositivo especificado por (m)<-(A)[el byte de mas a la derecha]"; break;
+            }
+            if(Convert.ToInt32(dataGridView2.Rows[0].Cells[1].Value.ToString(),16)<Convert.ToInt32(dirCargaHex,16) || Convert.ToInt32(dataGridView2.Rows[0].Cells[1].Value.ToString(), 16) > Convert.ToInt32(dirCargaHex, 16)+tam)
+            {
+                MessageBox.Show("CP fuera de rango de memoria");
             }
         }
 
