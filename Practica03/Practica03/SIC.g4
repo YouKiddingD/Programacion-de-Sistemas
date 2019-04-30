@@ -82,6 +82,8 @@ checarOpSTART
 	|
 	ETIQUETA {linea+=$ETIQUETA.text;}
 	|
+	checarOpbyte
+	|
 	~OPERANDO
 	;
 
@@ -100,7 +102,9 @@ checarOp
 	}
 	}
 	|
-	ETIQUETA {linea+=$ETIQUETA.text;}
+	ETIQUETA{linea+=$ETIQUETA.text;}
+	|
+	checarOpbyte
 	|
 	~OPERANDO
 	;

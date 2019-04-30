@@ -53,25 +53,25 @@
             this.Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtDirCarga = new System.Windows.Forms.TextBox();
-            this.txtLong = new System.Windows.Forms.TextBox();
-            this.btnLimpiar = new System.Windows.Forms.Button();
-            this.btnEjecutar = new System.Windows.Forms.Button();
-            this.btnEjecutarTodo = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.numLineas = new System.Windows.Forms.NumericUpDown();
             this.CP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Instruccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodOp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModoDir = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Operando = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Efecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.numLineas = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnEjecutarTodo = new System.Windows.Forms.Button();
+            this.btnEjecutar = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.txtLong = new System.Windows.Forms.TextBox();
+            this.txtDirCarga = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -79,8 +79,8 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numLineas)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -249,7 +249,7 @@
             // abrirToolStripMenuItem
             // 
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.abrirToolStripMenuItem.Text = "Abrir";
             this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
             // 
@@ -289,140 +289,6 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.Size = new System.Drawing.Size(846, 194);
             this.dataGridView3.TabIndex = 3;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 27);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(541, 413);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Mapa de Memoria";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dataGridView2);
-            this.groupBox2.Location = new System.Drawing.Point(559, 27);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(311, 183);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Registros";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.numLineas);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.btnEjecutarTodo);
-            this.groupBox3.Controls.Add(this.btnEjecutar);
-            this.groupBox3.Controls.Add(this.btnLimpiar);
-            this.groupBox3.Controls.Add(this.txtLong);
-            this.groupBox3.Controls.Add(this.txtDirCarga);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(559, 216);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(311, 224);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "General";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Direccion de Carga:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Longitud: ";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.dataGridView3);
-            this.groupBox4.Location = new System.Drawing.Point(12, 446);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(858, 219);
-            this.groupBox4.TabIndex = 7;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Ejecucion";
-            // 
-            // txtDirCarga
-            // 
-            this.txtDirCarga.Location = new System.Drawing.Point(113, 26);
-            this.txtDirCarga.Name = "txtDirCarga";
-            this.txtDirCarga.Size = new System.Drawing.Size(100, 20);
-            this.txtDirCarga.TabIndex = 8;
-            // 
-            // txtLong
-            // 
-            this.txtLong.Location = new System.Drawing.Point(113, 49);
-            this.txtLong.Name = "txtLong";
-            this.txtLong.Size = new System.Drawing.Size(100, 20);
-            this.txtLong.TabIndex = 9;
-            // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.Location = new System.Drawing.Point(230, 195);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiar.TabIndex = 10;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
-            // 
-            // btnEjecutar
-            // 
-            this.btnEjecutar.Location = new System.Drawing.Point(230, 162);
-            this.btnEjecutar.Name = "btnEjecutar";
-            this.btnEjecutar.Size = new System.Drawing.Size(75, 23);
-            this.btnEjecutar.TabIndex = 11;
-            this.btnEjecutar.Text = "Ejecutar";
-            this.btnEjecutar.UseVisualStyleBackColor = true;
-            this.btnEjecutar.Click += new System.EventHandler(this.btnEjecutar_Click);
-            // 
-            // btnEjecutarTodo
-            // 
-            this.btnEjecutarTodo.Location = new System.Drawing.Point(9, 195);
-            this.btnEjecutarTodo.Name = "btnEjecutarTodo";
-            this.btnEjecutarTodo.Size = new System.Drawing.Size(100, 23);
-            this.btnEjecutarTodo.TabIndex = 12;
-            this.btnEjecutarTodo.Text = "Ejecutar Todo";
-            this.btnEjecutarTodo.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 162);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 13);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Lineas a ejecutar: ";
-            // 
-            // numLineas
-            // 
-            this.numLineas.Location = new System.Drawing.Point(113, 162);
-            this.numLineas.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numLineas.Name = "numLineas";
-            this.numLineas.Size = new System.Drawing.Size(100, 20);
-            this.numLineas.TabIndex = 14;
-            this.numLineas.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // CP
             // 
@@ -466,6 +332,141 @@
             this.Efecto.ReadOnly = true;
             this.Efecto.Width = 400;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 27);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(541, 413);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Mapa de Memoria";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dataGridView2);
+            this.groupBox2.Location = new System.Drawing.Point(559, 27);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(311, 183);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Registros";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.numLineas);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.btnEjecutarTodo);
+            this.groupBox3.Controls.Add(this.btnEjecutar);
+            this.groupBox3.Controls.Add(this.btnLimpiar);
+            this.groupBox3.Controls.Add(this.txtLong);
+            this.groupBox3.Controls.Add(this.txtDirCarga);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Location = new System.Drawing.Point(559, 216);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(311, 224);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "General";
+            // 
+            // numLineas
+            // 
+            this.numLineas.Location = new System.Drawing.Point(113, 162);
+            this.numLineas.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numLineas.Name = "numLineas";
+            this.numLineas.Size = new System.Drawing.Size(100, 20);
+            this.numLineas.TabIndex = 14;
+            this.numLineas.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 162);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Instr. a ejecutar: ";
+            // 
+            // btnEjecutarTodo
+            // 
+            this.btnEjecutarTodo.Location = new System.Drawing.Point(9, 195);
+            this.btnEjecutarTodo.Name = "btnEjecutarTodo";
+            this.btnEjecutarTodo.Size = new System.Drawing.Size(100, 23);
+            this.btnEjecutarTodo.TabIndex = 12;
+            this.btnEjecutarTodo.Text = "Ejecutar Todo";
+            this.btnEjecutarTodo.UseVisualStyleBackColor = true;
+            this.btnEjecutarTodo.Click += new System.EventHandler(this.btnEjecutarTodo_Click);
+            // 
+            // btnEjecutar
+            // 
+            this.btnEjecutar.Location = new System.Drawing.Point(230, 162);
+            this.btnEjecutar.Name = "btnEjecutar";
+            this.btnEjecutar.Size = new System.Drawing.Size(75, 23);
+            this.btnEjecutar.TabIndex = 11;
+            this.btnEjecutar.Text = "Ejecutar";
+            this.btnEjecutar.UseVisualStyleBackColor = true;
+            this.btnEjecutar.Click += new System.EventHandler(this.btnEjecutar_Click);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(230, 195);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.TabIndex = 10;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            // 
+            // txtLong
+            // 
+            this.txtLong.Location = new System.Drawing.Point(113, 49);
+            this.txtLong.Name = "txtLong";
+            this.txtLong.Size = new System.Drawing.Size(100, 20);
+            this.txtLong.TabIndex = 9;
+            // 
+            // txtDirCarga
+            // 
+            this.txtDirCarga.Location = new System.Drawing.Point(113, 26);
+            this.txtDirCarga.Name = "txtDirCarga";
+            this.txtDirCarga.Size = new System.Drawing.Size(100, 20);
+            this.txtDirCarga.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Direccion de Carga:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Longitud: ";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.dataGridView3);
+            this.groupBox4.Location = new System.Drawing.Point(12, 446);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(858, 219);
+            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Ejecucion";
+            // 
             // MapaMemoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,8 +490,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numLineas)).EndInit();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

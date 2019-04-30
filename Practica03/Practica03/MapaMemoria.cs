@@ -15,6 +15,7 @@ namespace Practica03
         int tam;
         string tamHex;
         string dirCargaHex;
+        bool stop = false;
 
         public MapaMemoria()
         {
@@ -128,36 +129,50 @@ namespace Practica03
 
         private void btnEjecutar_Click(object sender, EventArgs e)
         {
-            //Se conoce el valor del contador
-            string CPHex = dataGridView2.Rows[0].Cells[1].Value.ToString();
-            int CP = Convert.ToInt32(CPHex, 16);
-            //3 primeros digitos del CP
-            string dirCP1 = CPHex.Substring(0, 5);
-            //Ultimo digito del CP
-            string dirCP2 = CPHex.Substring(5, 1);
-            int indexCell = Convert.ToInt32(dirCP2, 16) + 1;
+            for (int i=0;i<Int32.Parse(numLineas.Value.ToString());i++)
+            {
+                if (stop)
+                {
+                    break;
+                }
+                else
+                {
+                    //Se conoce el valor del contador
+                    string CPHex = dataGridView2.Rows[0].Cells[1].Value.ToString();
+                    int CP = Convert.ToInt32(CPHex, 16);
+                    //3 primeros digitos del CP
+                    string dirCP1 = CPHex.Substring(0, 5);
+                    //Ultimo digito del CP
+                    string dirCP2 = CPHex.Substring(5, 1);
+                    int indexCell = Convert.ToInt32(dirCP2, 16) + 1;
 
-            //Se leen 3 bytes
-            string instruccion = get3Bytes(dirCP1, indexCell);
+                    //Se leen 3 bytes
+                    string instruccion = get3Bytes(dirCP1, indexCell);
 
-            //Se actualiza el valor del CP
-            string CPHexAux = CPHex;
-            CP += 3;
-            CPHex = CP.ToString("X").PadLeft(6, '0');
-            dataGridView2.Rows[0].Cells[1].Value = CPHex;
+                    //Se actualiza el valor del CP
+                    string CPHexAux = CPHex;
+                    CP += 3;
+                    CPHex = CP.ToString("X").PadLeft(6, '0');
+                    dataGridView2.Rows[0].Cells[1].Value = CPHex;
 
-            //Se interpreta la instruccion
-            string codOp = instruccion.Substring(0, 2);
-            string nemonico = getNemonico(codOp);
-            string efecto = getEfecto(codOp);
-            string operando = instruccion.Substring(2, 4);
-            string modDir = getModDir(operando.Substring(0, 1));
+                    //Se interpreta la instruccion
+                    string codOp = instruccion.Substring(0, 2);
+                    string nemonico = getNemonico(codOp);
+                    string efecto = getEfecto(codOp);
+                    string operando = instruccion.Substring(2, 4);
+                    string modDir = getModDir(operando.Substring(0, 1));
 
-            dataGridView3.Rows.Add(CPHexAux, nemonico, codOp, modDir, operando, efecto);
+                    dataGridView3.Rows.Add(CPHexAux, nemonico, codOp, modDir, operando, efecto);
 
-            //Se aplica el efecto
-            operando = modDir == "INDEXADO" ? restaHEX(sumaHEX(operando, dataGridView2.Rows[2].Cells[1].Value.ToString()), "8000") : operando;
-            aplicarEfecto(codOp, operando);
+                    //Se aplica el efecto
+                    operando = modDir == "INDEXADO" ? restaHEX(sumaHEX(operando, dataGridView2.Rows[2].Cells[1].Value.ToString()), "8000") : operando;
+                    aplicarEfecto(codOp, operando);
+                }
+            }
+            if (stop)
+            {
+                MessageBox.Show("TERMINA EJECUCION");
+            }
         }
 
         private string sumaHEX(string HEX1, string HEX2)
@@ -186,40 +201,49 @@ namespace Practica03
         private string get3Bytes(string dirCP1, int indexCell)
         {
             string instruccion = "";
-
-            for (int i = 0; i < dataGridView1.RowCount; i++)
+            try
             {
-                string currentDir = dataGridView1.Rows[i].Cells[0].Value.ToString();
-
-                if (currentDir.Substring(0, 5) == dirCP1)
+                for (int i = 0; i < dataGridView1.RowCount; i++)
                 {
-                    for (int j = 0; j < 3; j++)
-                    {
-                        instruccion += dataGridView1.Rows[i].Cells[indexCell].Value.ToString();
-                        indexCell++;
-                        if (indexCell > 16)
-                        {
-                            i++;
-                            indexCell = 1;
-                        }
-                    }
-                    break;
-                }
-            }
+                    string currentDir = dataGridView1.Rows[i].Cells[0].Value.ToString();
 
-            if (instruccion[2] == ' ')
-            {
-                instruccion = "000000";
+                    if (currentDir.Substring(0, 5) == dirCP1)
+                    {
+                        for (int j = 0; j < 3; j++)
+                        {
+                            instruccion += dataGridView1.Rows[i].Cells[indexCell].Value.ToString();
+                            indexCell++;
+                            if (indexCell > 16)
+                            {
+                                i++;
+                                indexCell = 1;
+                            }
+                        }
+                        break;
+                    }
+                }
+
+                if (instruccion[2] == ' ')
+                {
+                    instruccion = "000000";
+                }
+                return instruccion;
             }
-            return instruccion;
+            catch(NullReferenceException xe)
+            {
+                stop = true;
+                MessageBox.Show("CP fuera de rango de memoria");
+                return "FFFFFF";
+            }
         }
 
         private void set3Bytes(string dir, string value)
         {
             string dirCP1 = dir.PadLeft(6, '0').Substring(0, 5);
             int indexCell = Convert.ToInt32((dir.PadLeft(6, '0').Substring(5, 1)), 16) + 1;
-            if (Convert.ToInt32(dirCP1, 16) < Convert.ToInt32(dirCargaHex, 16) || Convert.ToInt32(dirCP1, 16) > Convert.ToInt32(dirCargaHex, 16) + tam)
+            if (!stop && (Convert.ToInt32(dir, 16) < Convert.ToInt32(dirCargaHex, 16) || Convert.ToInt32(dir, 16) > Convert.ToInt32(dirCargaHex, 16) + tam))
             {
+                stop = true;
                 MessageBox.Show("CP fuera de rango de memoria");
             }
             for (int i = 0; i < dataGridView1.RowCount - 1; i++)
@@ -412,7 +436,7 @@ namespace Practica03
                     dataGridView2.Rows[1].Cells[1].Value = data;
                     efecto = "A<-(A)&(m..m+2)"; break;
                 case "28":
-                    compHEX(dataGridView2.Rows[1].Cells[1].Value.ToString(), get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1));
+                    dataGridView2.Rows[4].Cells[1].Value = compHEX(dataGridView2.Rows[1].Cells[1].Value.ToString(), get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1));
                     efecto = "A:(m..m+2)"; break;
                 case "24":
                     dataGridView2.Rows[1].Cells[1].Value = (Convert.ToInt32(get3Bytes(dataGridView2.Rows[1].Cells[1].Value.ToString().PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(dataGridView2.Rows[1].Cells[1].Value.ToString().PadLeft(6, '0').Substring(5, 1), 16) + 1), 16) / Convert.ToInt32(get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1), 16)).ToString("X");
@@ -486,8 +510,9 @@ namespace Practica03
                 case "DC":
                     efecto = "Dispositivo especificado por (m)<-(A)[el byte de mas a la derecha]"; break;
             }
-            if(Convert.ToInt32(dataGridView2.Rows[0].Cells[1].Value.ToString(),16)<Convert.ToInt32(dirCargaHex,16) || Convert.ToInt32(dataGridView2.Rows[0].Cells[1].Value.ToString(), 16) > Convert.ToInt32(dirCargaHex, 16)+tam)
+            if(!stop && (Convert.ToInt32(dataGridView2.Rows[0].Cells[1].Value.ToString(), 16) < Convert.ToInt32(dirCargaHex, 16) || Convert.ToInt32(dataGridView2.Rows[0].Cells[1].Value.ToString(), 16) > Convert.ToInt32(dirCargaHex, 16) + tam))
             {
+                stop = true;
                 MessageBox.Show("CP fuera de rango de memoria");
             }
         }
@@ -495,6 +520,51 @@ namespace Practica03
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnEjecutarTodo_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 1000; i++)
+            {
+                if (stop)
+                {
+                    MessageBox.Show("TERMINA EJECUCION");
+                    break;
+                }
+                else
+                {
+                    //Se conoce el valor del contador
+                    string CPHex = dataGridView2.Rows[0].Cells[1].Value.ToString();
+                    int CP = Convert.ToInt32(CPHex, 16);
+                    //3 primeros digitos del CP
+                    string dirCP1 = CPHex.Substring(0, 5);
+                    //Ultimo digito del CP
+                    string dirCP2 = CPHex.Substring(5, 1);
+                    int indexCell = Convert.ToInt32(dirCP2, 16) + 1;
+
+                    //Se leen 3 bytes
+                    string instruccion = get3Bytes(dirCP1, indexCell);
+
+                    //Se actualiza el valor del CP
+                    string CPHexAux = CPHex;
+                    CP += 3;
+                    CPHex = CP.ToString("X").PadLeft(6, '0');
+                    dataGridView2.Rows[0].Cells[1].Value = CPHex;
+
+                    //Se interpreta la instruccion
+                    string codOp = instruccion.Substring(0, 2);
+                    string nemonico = getNemonico(codOp);
+                    string efecto = getEfecto(codOp);
+                    string operando = instruccion.Substring(2, 4);
+                    string modDir = getModDir(operando.Substring(0, 1));
+
+                    dataGridView3.Rows.Add(CPHexAux, nemonico, codOp, modDir, operando, efecto);
+
+                    //Se aplica el efecto
+                    operando = modDir == "INDEXADO" ? restaHEX(sumaHEX(operando, dataGridView2.Rows[2].Cells[1].Value.ToString()), "8000") : operando;
+                    aplicarEfecto(codOp, operando);
+                }
+            }
         }
     }
 }
