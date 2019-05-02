@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica03\SIC.g4 by ANTLR 4.6.6
+// Generated from C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\SIC.g4 by ANTLR 4.6.6
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -151,6 +151,17 @@ public interface ISICListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitChecarOp([NotNull] SICParser.ChecarOpContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.checarOpEND"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterChecarOpEND([NotNull] SICParser.ChecarOpENDContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.checarOpEND"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitChecarOpEND([NotNull] SICParser.ChecarOpENDContext context);
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SICParser.checarDirec"/>.

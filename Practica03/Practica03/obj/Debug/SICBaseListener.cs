@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica03\SIC.g4 by ANTLR 4.6.6
+// Generated from C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\SIC.g4 by ANTLR 4.6.6
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -177,6 +177,19 @@ public partial class SICBaseListener : ISICListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitChecarOp([NotNull] SICParser.ChecarOpContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.checarOpEND"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterChecarOpEND([NotNull] SICParser.ChecarOpENDContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.checarOpEND"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitChecarOpEND([NotNull] SICParser.ChecarOpENDContext context) { }
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SICParser.checarDirec"/>.

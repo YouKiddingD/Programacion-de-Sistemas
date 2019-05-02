@@ -89,7 +89,7 @@ namespace Practica03
 
         private void guardarTabsim(string sim, string direc)
         {
-            string direccion = sim + "\t" + direc;
+            string direccion = sim + "\t" + direc.PadLeft(4, '0');
             tamSimb.cambiarText(direccion + '\n');
         }
 
@@ -111,7 +111,7 @@ namespace Practica03
                     if (archInt.dataGridView1.Rows[i].Cells[2].Value.ToString() == "BYTE")
                         obj = archInt.dataGridView1.Rows[i].Cells[4].Value.ToString();
                     else if (archInt.dataGridView1.Rows[i].Cells[4].Value.ToString() != "")
-                        obj = archInt.dataGridView1.Rows[i].Cells[4].Value.ToString().Substring(0, 6);
+                        obj = archInt.dataGridView1.Rows[i].Cells[4].Value.ToString().PadLeft(6, '0').Substring(0, 6);
                     else
                         obj = "";
                 }
@@ -156,8 +156,11 @@ namespace Practica03
                     regT = "";
                 }
             }
-
-            string dirEnd = tamSimb.regresaDir(archInt.dataGridView1.Rows[archInt.dataGridView1.RowCount - 1].Cells[3].Value.ToString());
+            string dirEnd = "";
+            if (archInt.dataGridView1.Rows[archInt.dataGridView1.RowCount - 1].Cells[3].Value.ToString() != "")
+                dirEnd = tamSimb.regresaDir(archInt.dataGridView1.Rows[archInt.dataGridView1.RowCount - 1].Cells[3].Value.ToString());
+            else
+                dirEnd = dirInicio;
             progObjeto += "E" + dirEnd.PadLeft(6, '0');
 
             codObj.cambiarText(progObjeto, filePath);

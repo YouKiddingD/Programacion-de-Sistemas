@@ -235,7 +235,7 @@ namespace Practica03
                         }
                     }
                     if (encontrado)
-                        dataGridView1.Rows[i].Cells[4].Value = CodOP + dir;
+                        dataGridView1.Rows[i].Cells[4].Value = CodOP + dir.PadLeft(4, '0');
                     else
                         dataGridView1.Rows[i].Cells[4].Value = CodOP + "FFFF ERROR: SIMBOLO NO EXISTE";
                 }

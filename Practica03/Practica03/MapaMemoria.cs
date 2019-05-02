@@ -38,7 +38,7 @@ namespace Practica03
                 dirCarga = registros[i].Substring(1, 6);
                 for (int j = 0; j < dataGridView1.Rows.Count; j++)
                 {
-                    string dirT = dataGridView1.Rows[j].Cells[0].Value.ToString().Substring(0, 5);
+                    string dirT = dataGridView1.Rows[j].Cells[0].Value.ToString().PadLeft(6,'0').Substring(0, 5);
                     if (dirT == dirCarga.Substring(0, 5))
                     {
                         int ultimo = Convert.ToInt32(dirCarga.Last().ToString(), 16);
@@ -70,8 +70,10 @@ namespace Practica03
 
         public void initDirecciones(string dirCarga)
         {
+            dirCarga = dirCarga.Substring(0, 5) + "0";
             int dir = Convert.ToInt32(dirCarga, 16);
-            for (int i = dir; i < tam + dir; i += 16)
+            int ultimaDir = tam + dir+10;
+            for (int i = dir; i < ultimaDir; i += 16)
             {
                 dataGridView1.Rows.Add(dirCarga.PadLeft(6, '0'), "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ");
                 dirCarga = (Convert.ToInt32(dirCarga, 16) + 16).ToString("X");
@@ -127,9 +129,9 @@ namespace Practica03
             txtLong.Text = tamHex.ToString().PadLeft(6, '0');
         }
 
-        private void btnEjecutar_Click(object sender, EventArgs e)
+        private void ejecutarLinea()
         {
-            for (int i=0;i<Int32.Parse(numLineas.Value.ToString());i++)
+            for (int i = 0; i < Int32.Parse(numLineas.Value.ToString()); i++)
             {
                 if (stop)
                 {
@@ -173,6 +175,11 @@ namespace Practica03
             {
                 MessageBox.Show("TERMINA EJECUCION");
             }
+        }
+
+        private void btnEjecutar_Click(object sender, EventArgs e)
+        {
+            ejecutarLinea();
         }
 
         private string sumaHEX(string HEX1, string HEX2)
@@ -412,7 +419,7 @@ namespace Practica03
 
         private string getModDir(string operando)
         {
-            return (Convert.ToInt32(operando, 16) - 8) > 0 ? "INDEXADO" : "DIRECTO";
+            return (Convert.ToInt32(operando, 16) - 8) >= 0 ? "INDEXADO" : "DIRECTO";
         }
 
         private void aplicarEfecto(string codOp, string operando)
@@ -462,6 +469,9 @@ namespace Practica03
                     dataGridView2.Rows[1].Cells[1].Value = data;
                     break;
                 case "50":
+                    if (currentA == "FFFFFF")
+                        currentA = "000000";
+                    dataGridView2.Rows[1].Cells[1].Value = currentA.Substring(0,4) + get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1).Substring(0,2);
                     efecto = "A[el byte de mas a la derecha]<-(m)"; break;
                 case "08":
                     dataGridView2.Rows[3].Cells[1].Value = get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1);
@@ -564,6 +574,14 @@ namespace Practica03
                     operando = modDir == "INDEXADO" ? restaHEX(sumaHEX(operando, dataGridView2.Rows[2].Cells[1].Value.ToString()), "8000") : operando;
                     aplicarEfecto(codOp, operando);
                 }
+            }
+        }
+
+        private void MapaMemoria_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F9")
+            {
+                ejecutarLinea();
             }
         }
     }

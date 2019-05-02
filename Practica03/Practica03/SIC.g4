@@ -14,6 +14,7 @@ options
 	string linea = "";
 	string Direct = "";
 	int OP = 0;
+	string valor="";
 	}
 
 /*
@@ -25,7 +26,7 @@ go[string vale, string vali]: {rutae=vale; rutai = vali;}inicio expr* fin;
 
 inicio: checarEtiq checarINIT checarOpSTART updateLine ENTER {i++;};
 
-fin: checarEtiq checarACABA checarOp ENTER {i++;}{using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutai, true)){ file.WriteLine(linea);}}; 
+fin: checarEtiq checarACABA checarOpEND {i++;}{using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutai, true)){ file.WriteLine(linea);}}; 
 
 expr : (checarEtiq checarInstru checarOp updateCPInst updateLine ENTER
 	| checarEtiq checarRsub updateCPInst updateLine ENTER
@@ -47,7 +48,7 @@ checarOpbyte
 	:
 	~OPERANDBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error OPBYTE en la linea: " + i);}}
 	|
-	OPERANDBYTE {linea+= $OPERANDBYTE.text;}
+	OPERANDBYTE {linea+= $OPERANDBYTE.text; valor = $OPERANDBYTE.text;}
 	;
 
 checarByte
@@ -109,6 +110,26 @@ checarOp
 	~OPERANDO
 	;
 
+checarOpEND
+	:
+	OPERANDO {
+	linea+= $OPERANDO.text;
+	if($OPERANDO.text[$OPERANDO.text.Length-1]=='H' || $OPERANDO.text[$OPERANDO.text.Length-1]=='h')
+	{
+		string final = $OPERANDO.text.Substring(0, $OPERANDO.text.Length - 1);
+		OP = System.Convert.ToInt32(final,16);
+	}
+	else
+	{
+		OP =  System.Int32.Parse($OPERANDO.text);
+	}
+	}
+	|
+	ETIQUETA{linea+=$ETIQUETA.text;}
+	|
+	~OPERANDO
+	;
+
 checarDirec
 	:
 	~DIRECTIVA checarByte
@@ -151,7 +172,18 @@ updateCPInst : {CP+=3;};
 
 updateLine : {linea+='\n';};
 
-updateCPByte : {};
+updateCPByte : {
+	if(valor[0]=='C')
+	{
+		valor = valor.Substring(2,valor.Length-3);
+		CP+=valor.Length;
+	}
+	else
+	{
+		valor = valor.Substring(2,valor.Length-3);
+		CP+=(int)(valor.Length/2);
+	}
+};
 
 /*
  * Lexer Rules
