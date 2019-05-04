@@ -204,8 +204,10 @@ namespace Practica03
                         break;
                     case "WORD":
                     case "WORD/t":
-                        dataGridView1.Rows[i].Cells[4].Value = operando.PadLeft(6,'0');
-
+                        if(operando[operando.Length-1]=='H')
+                            dataGridView1.Rows[i].Cells[4].Value = operando.PadLeft(6, '0');
+                        else
+                            dataGridView1.Rows[i].Cells[4].Value = Int32.Parse(operando).ToString("X").PadLeft(6, '0');
                         directiva = true;
                         break;
                     case "END":
