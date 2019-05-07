@@ -276,7 +276,7 @@ namespace Practica03
             {
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
-                    openFileDialog.Filter = "Codigo fuente (*.s)|*.s";
+                    openFileDialog.Filter = "Codigo fuente (*.s)|*.s|*.x";
                     openFileDialog.FilterIndex = 2;
                     openFileDialog.RestoreDirectory = true;
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -302,7 +302,7 @@ namespace Practica03
             Stream myStream;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
-            saveFileDialog.Filter = "Codigo fuente (*.s)|*.s";
+            saveFileDialog.Filter = "Codigo fuente (*.s)|*.s|*.x";
             saveFileDialog.FilterIndex = 2;
             saveFileDialog.RestoreDirectory = true;
 
