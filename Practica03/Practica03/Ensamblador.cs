@@ -276,7 +276,7 @@ namespace Practica03
             {
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
-                    openFileDialog.Filter = "Codigo fuente (*.s)|*.s|*.x";
+                    openFileDialog.Filter = "Codigo fuente (*.s)|*.s";
                     openFileDialog.FilterIndex = 2;
                     openFileDialog.RestoreDirectory = true;
                     if (openFileDialog.ShowDialog() == DialogResult.OK)

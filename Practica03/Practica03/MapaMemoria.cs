@@ -16,6 +16,7 @@ namespace Practica03
         string tamHex;
         string dirCargaHex;
         bool stop = false;
+        string programaObj;
 
         public MapaMemoria()
         {
@@ -27,6 +28,7 @@ namespace Practica03
             string[] registros = progObj.Split('\n');
             string dirCarga = registros[0].Substring(7, 6);
 
+            programaObj = progObj;
             dirCargaHex = dirCarga;
             tam = tamArch;
             tamHex = tamArch.ToString("X");
@@ -38,7 +40,7 @@ namespace Practica03
                 dirCarga = registros[i].Substring(1, 6);
                 for (int j = 0; j < dataGridView1.Rows.Count; j++)
                 {
-                    string dirT = dataGridView1.Rows[j].Cells[0].Value.ToString().PadLeft(6,'0').Substring(0, 5);
+                    string dirT = dataGridView1.Rows[j].Cells[0].Value.ToString().PadLeft(6, '0').Substring(0, 5);
                     if (dirT == dirCarga.Substring(0, 5))
                     {
                         int ultimo = Convert.ToInt32(dirCarga.Last().ToString(), 16);
@@ -72,7 +74,7 @@ namespace Practica03
         {
             dirCarga = dirCarga.Substring(0, 5) + "0";
             int dir = Convert.ToInt32(dirCarga, 16);
-            int ultimaDir = tam + dir+10;
+            int ultimaDir = tam + dir + 10;
             for (int i = dir; i < ultimaDir; i += 16)
             {
                 dataGridView1.Rows.Add(dirCarga.PadLeft(6, '0'), "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ", "FF ");
@@ -164,7 +166,8 @@ namespace Practica03
                     string operando = instruccion.Substring(2, 4);
                     string modDir = getModDir(operando.Substring(0, 1));
 
-                    dataGridView3.Rows.Add(CPHexAux, nemonico, codOp, modDir, operando, efecto);
+                    if (nemonico != "")
+                        dataGridView3.Rows.Add(CPHexAux, nemonico, codOp, modDir, operando, efecto);
 
                     //Se aplica el efecto
                     operando = modDir == "INDEXADO" ? restaHEX(sumaHEX(operando, dataGridView2.Rows[2].Cells[1].Value.ToString()), "8000") : operando;
@@ -236,7 +239,7 @@ namespace Practica03
                 }
                 return instruccion;
             }
-            catch(NullReferenceException xe)
+            catch (NullReferenceException xe)
             {
                 stop = true;
                 MessageBox.Show("CP fuera de rango de memoria");
@@ -471,7 +474,7 @@ namespace Practica03
                 case "50":
                     if (currentA == "FFFFFF")
                         currentA = "000000";
-                    dataGridView2.Rows[1].Cells[1].Value = currentA.Substring(0,4) + get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1).Substring(0,2);
+                    dataGridView2.Rows[1].Cells[1].Value = currentA.Substring(0, 4) + get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1).Substring(0, 2);
                     efecto = "A[el byte de mas a la derecha]<-(m)"; break;
                 case "08":
                     dataGridView2.Rows[3].Cells[1].Value = get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1);
@@ -481,7 +484,7 @@ namespace Practica03
                     dataGridView2.Rows[2].Cells[1].Value = data;
                     break;
                 case "20":
-                    dataGridView2.Rows[1].Cells[1].Value = (Convert.ToInt32(get3Bytes(dataGridView2.Rows[1].Cells[1].Value.ToString().PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(dataGridView2.Rows[1].Cells[1].Value.ToString().PadLeft(6, '0').Substring(5, 1), 16) + 1),16)*Convert.ToInt32(get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1),16)).ToString("X");
+                    dataGridView2.Rows[1].Cells[1].Value = (Convert.ToInt32(get3Bytes(dataGridView2.Rows[1].Cells[1].Value.ToString().PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(dataGridView2.Rows[1].Cells[1].Value.ToString().PadLeft(6, '0').Substring(5, 1), 16) + 1), 16) * Convert.ToInt32(get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1), 16)).ToString("X");
                     efecto = "A<-(A)*(m..m+2)"; break;
                 case "44":
                     dataGridView2.Rows[1].Cells[1].Value = (Convert.ToInt32(get3Bytes(dataGridView2.Rows[1].Cells[1].Value.ToString().PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(dataGridView2.Rows[1].Cells[1].Value.ToString().PadLeft(6, '0').Substring(5, 1), 16) + 1), 16) | Convert.ToInt32(get3Bytes(operando.PadLeft(6, '0').Substring(0, 5), Convert.ToInt32(operando.PadLeft(6, '0').Substring(5, 1), 16) + 1), 16)).ToString("X");
@@ -496,7 +499,7 @@ namespace Practica03
                     break;
                 case "54":
                     efecto = "m<-A[el byte de mas a la derecha]";
-                    set1Bytes(operando,currentA.Substring(4,2));
+                    set1Bytes(operando, currentA.Substring(4, 2));
                     break;
                 case "14":
                     set3Bytes(operando, currentL);
@@ -520,7 +523,7 @@ namespace Practica03
                 case "DC":
                     efecto = "Dispositivo especificado por (m)<-(A)[el byte de mas a la derecha]"; break;
             }
-            if(!stop && (Convert.ToInt32(dataGridView2.Rows[0].Cells[1].Value.ToString(), 16) < Convert.ToInt32(dirCargaHex, 16) || Convert.ToInt32(dataGridView2.Rows[0].Cells[1].Value.ToString(), 16) > Convert.ToInt32(dirCargaHex, 16) + tam))
+            if (!stop && (Convert.ToInt32(dataGridView2.Rows[0].Cells[1].Value.ToString(), 16) < Convert.ToInt32(dirCargaHex, 16) || Convert.ToInt32(dataGridView2.Rows[0].Cells[1].Value.ToString(), 16) > Convert.ToInt32(dirCargaHex, 16) + tam))
             {
                 stop = true;
                 MessageBox.Show("CP fuera de rango de memoria");
@@ -568,7 +571,8 @@ namespace Practica03
                     string operando = instruccion.Substring(2, 4);
                     string modDir = getModDir(operando.Substring(0, 1));
 
-                    dataGridView3.Rows.Add(CPHexAux, nemonico, codOp, modDir, operando, efecto);
+                    if (nemonico != "")
+                        dataGridView3.Rows.Add(CPHexAux, nemonico, codOp, modDir, operando, efecto);
 
                     //Se aplica el efecto
                     operando = modDir == "INDEXADO" ? restaHEX(sumaHEX(operando, dataGridView2.Rows[2].Cells[1].Value.ToString()), "8000") : operando;
@@ -583,6 +587,25 @@ namespace Practica03
             {
                 ejecutarLinea();
             }
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView3_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            dataGridView3.FirstDisplayedScrollingRowIndex = dataGridView3.RowCount - 1;
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            dataGridView3.Rows.Clear();
+            dataGridView1.Rows.Clear();
+            dataGridView2.Rows.Clear();
+            cargar(programaObj, tam);
+            stop = false;
         }
     }
 }
