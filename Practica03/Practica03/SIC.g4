@@ -15,6 +15,7 @@ options
 	string Direct = "";
 	int OP = 0;
 	string valor="";
+	int form = 0;
 	}
 
 /*
@@ -28,10 +29,11 @@ inicio: checarEtiq checarINIT checarOpSTART updateLine ENTER {i++;};
 
 fin: checarEtiq checarACABA checarOpEND {i++;}{using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutai, true)){ file.WriteLine(linea);}}; 
 
-expr : (checarEtiq checarInstru checarOp updateCPInst updateLine ENTER
+expr : (checarEtiq checarInstruExt updateCPInst updateLine ENTER
+	| checarEtiq checarInstru checarOp updateCPInst updateLine ENTER
 	| checarEtiq checarRsub updateCPInst updateLine ENTER
 	| checarEtiq checarDirec checarOp casoDirec updateLine ENTER
-	| checarEtiq checarByte checarOpbyte updateCPByte updateLine ENTER) {i++;}
+	| checarEtiq checarByte checarOpbyte updateCPByte updateLine ENTER){i++;}
 	;
 
 checarINIT
@@ -112,6 +114,8 @@ checarOp
 
 checarOpEND
 	:
+	ETIQUETA{linea+=$ETIQUETA.text;}
+	|
 	OPERANDO {
 	linea+= $OPERANDO.text;
 	if($OPERANDO.text[$OPERANDO.text.Length-1]=='H' || $OPERANDO.text[$OPERANDO.text.Length-1]=='h')
@@ -124,8 +128,6 @@ checarOpEND
 		OP =  System.Int32.Parse($OPERANDO.text);
 	}
 	}
-	|
-	ETIQUETA{linea+=$ETIQUETA.text;}
 	|
 	~OPERANDO
 	;
@@ -164,11 +166,62 @@ checarInstru
 	INSTRUCCION {linea+=$INSTRUCCION.text;}
 	;
 
+checarOPExt
+	:
+	checarOPF2
+	|
+	checarOPF3
+	;
+
+checarInstruExt
+	:
+	FORMATO1 {linea+=$FORMATO1.text; form=1;}
+	|
+	FORMATO2 {linea+=$FORMATO2.text; form=2;} checarOPF2
+	|
+	FORMATO3 {linea+=$FORMATO3.text; form=3;} checarOPF3
+	|
+	FORMATO4 {linea+=$FORMATO4.text; form=4;} checarOPF3
+	|
+	WS
+	;
+
+
+checarOPF2
+	:
+	OPERANDO {linea+=$OPERANDO.text;}
+	|
+	REG {linea+=$REG.text;}
+	;
+
+checarOPF3
+	:
+	OPERANDO {linea+=$OPERANDO.text;}
+	|
+	ETIQUETA {linea+=$ETIQUETA.text;}
+	|
+	INDIRECTO {linea+=$INDIRECTO.text;}
+	|
+	INMEDIATO {linea+=$INMEDIATO.text;}
+	;
+
+
 compileUnit
 	:	expr EOF
 	;
 
-updateCPInst : {CP+=3;};
+updateCPInst : {switch(form)
+	{
+		case 1: CP+=1;
+		break;
+		case 2: CP+=2;
+		break;
+		case 3: CP+=3;
+		break;
+		case 4: CP+=4;
+		break;
+	}
+};
 
 updateLine : {linea+='\n';};
 
@@ -193,11 +246,18 @@ INIT: 'START''\t'?;
 ACABA: 'END''\t'?;
 DIRBYTE: 'BYTE''\t'?;
 OPERANDBYTE: ('C'QUOTE[A-Z]*[0-9]*[A-Z]*QUOTE | 'X'QUOTE[A-F]*[0-9]*[A-F]*QUOTE );
-DIRECTIVA: ('WORD'|'RESB'|'RESW')'\t'?;
+DIRECTIVA: ('WORD'|'RESB'|'RESW'|'BASE')'\t'?;
 EXEP: 'RSUB''\t'?;
+FORMATO1: ('FIX'|'FLOAT'|'HIO'|'NORM'|'SIO'|'TIO')'\t'?;
+FORMATO2: ('ADDR'|'CLEAR'|'COMPR'|'DIVR'|'MULR'|'RMO'|'SHIFTL'|'SHIFTR'|'SUBR'|'SVC'|'TIXR')'\t'?;
+FORMATO3: ('ADD'|'ADDF'|'AND'|'COMP'|'COMPF'|'DIV'|'DIVF'|'J'|'JEQ'|'JGT'|'JLT'|'JSUB'|'LDA'|'LDB'|'LDCH'|'LDF'|'LDL'|'LDS'|'LDT'|'LDX'|'LPS'|'MUL'|'MULF'|'OR'|'RD'|'RSUB'|'SSK'|'STA'|'STB'|'STCH'|'STF'|'STI'|'STL'|'STS'|'STSW'|'STT'|'STX'|'SUB'|'SUBF'|'TD'|'TIX'|'WD')'\t'?;
+FORMATO4: ('+'FORMATO3);
 INSTRUCCION: ('ADD'|'AND'|'COMP'|'DIV'|'J'|'JEQ'|'JGT'|'JLT'|'JSUB'|'LDA'|'LDCH'|'LDL'|'LDX'|'MUL'|'OR'|'RD'|'STA'|'STCH'|'STL'|'STSW'|'STX'|'SUB'|'TD'|'TIX'|'WD')'\t'?;
+INDIRECTO:'@'(ETIQUETA|OPERANDO);
+INMEDIATO:'#'(ETIQUETA|OPERANDO);
+REG: ('A'|'X'|'L'|'CP'|'SW'|'B'|'S'|'T'|'F')(','(OPERANDO|('A'|'X'|'L'|'CP'|'SW'|'B'|'S'|'T'|'F')))?'\t'?; 
 OPERANDO: [0-9]+(('H'|'h')?)((', X'|',X')?);
-ETIQUETA: ([A-Z]+ [0-9]*)((', X'|',X')?)'\t'? | '\t';
+ETIQUETA: ([A-Z]+[0-9]*)((', X'|',X')?)'\t'? | '\t';
 ENTER: '\n';
 QUOTE : '\'';
 WS

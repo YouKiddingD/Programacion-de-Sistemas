@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\SIC.g4 by ANTLR 4.6.6
+// Generated from C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica03\SIC.g4 by ANTLR 4.6.6
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -143,6 +143,34 @@ public interface ISICVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitChecarInstru([NotNull] SICParser.ChecarInstruContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SICParser.checarOPExt"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitChecarOPExt([NotNull] SICParser.ChecarOPExtContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SICParser.checarInstruExt"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitChecarInstruExt([NotNull] SICParser.ChecarInstruExtContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SICParser.checarOPF2"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitChecarOPF2([NotNull] SICParser.ChecarOPF2Context context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SICParser.checarOPF3"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitChecarOPF3([NotNull] SICParser.ChecarOPF3Context context);
 
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SICParser.compileUnit"/>.

@@ -23,6 +23,7 @@ namespace Practica03
         MapaMemoria mapaMemoria;
         string nombreProg;
         string progObjeto = "";
+        bool extendido = false;
 
         public Ensamblador()
         {
@@ -58,8 +59,17 @@ namespace Practica03
                     prog += linea + '\n';
                 }
                 error = line.Substring(0, line.Length - 1);
-                using (FileStream fs = File.Create(error + 't'))
+                if (extendido)
                 {
+                    using (FileStream fs = File.Create(error + "tx"))
+                    {
+                    }
+                }
+                else
+                {
+                    using (FileStream fs = File.Create(error + "ts"))
+                    {
+                    }
                 }
                 using (FileStream fs = File.Create(error + 'i'))
                 {
@@ -73,7 +83,14 @@ namespace Practica03
                 SICParser parser = new SICParser(tokens);
                 //CREAMOS EL PARSER CON LOS TOKENS CREADOS
 
-                parser.go(error + 't', error + 'i');
+                if(extendido)
+                {
+                    parser.go(error + "tx", error + 'i');
+                }
+                else
+                {
+                    parser.go(error + "ts", error + 'i');
+                }
                 printErrors();
                 mostrarIntermedio();
             }
@@ -276,13 +293,21 @@ namespace Practica03
             {
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
-                    openFileDialog.Filter = "Codigo fuente (*.s)|*.s";
+                    openFileDialog.Filter = "SIC estandar (*.s)|*.s|SICXE (*.x)|*.x";
                     openFileDialog.FilterIndex = 2;
                     openFileDialog.RestoreDirectory = true;
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
                         filePath = openFileDialog.FileName;
                     }
+                }
+                if(filePath[filePath.Length-1]=='x')
+                {
+                    extendido = true;
+                }
+                else
+                {
+                    extendido = false;
                 }
                 file = new System.IO.StreamReader(filePath);
                 while ((linea = file.ReadLine()) != null)
@@ -302,7 +327,7 @@ namespace Practica03
             Stream myStream;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
-            saveFileDialog.Filter = "Codigo fuente (*.s)|*.s|*.x";
+            saveFileDialog.Filter = "SIC estandar (*.s)|*.s|SICXE (*.x)|*.x";
             saveFileDialog.FilterIndex = 2;
             saveFileDialog.RestoreDirectory = true;
 
@@ -313,6 +338,15 @@ namespace Practica03
                     myStream.Close();
                     string createText = archfuente.regresarText();
                     File.WriteAllText(saveFileDialog.FileName, createText);
+                    filePath = saveFileDialog.FileName;
+                    if (filePath[filePath.Length - 1] == 'x')
+                    {
+                        extendido = true;
+                    }
+                    else
+                    {
+                        extendido = false;
+                    }
                 }
             }
         }
