@@ -222,8 +222,15 @@ namespace Practica03
                 }
                 file.Close();
                 toolStripTextBox1.Text = "Tamaño: " + archInt.tamanoArchivo().ToString("X");
-                archInt.crearCodigoObj(tamSimb.regresarText());
-                generarProgramObjeto();
+                if (!extendido)
+                {
+                    archInt.crearCodigoObj(tamSimb.regresarText());
+                    generarProgramObjeto();
+                }
+                else
+                {
+                    archInt.llenarDireccionamiento();
+                }
             }
             catch (Exception ex)
             {

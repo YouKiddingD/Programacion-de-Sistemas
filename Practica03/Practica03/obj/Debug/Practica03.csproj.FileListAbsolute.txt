@@ -73,3 +73,4 @@ C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica0
 C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.csproj.CoreCompileInputs.cache
 C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.exe
 C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.pdb
+C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.csprojResolveAssemblyReference.cache

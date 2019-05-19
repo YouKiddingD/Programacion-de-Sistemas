@@ -49,6 +49,33 @@ namespace Practica03
 
         }
 
+        public void llenarDireccionamiento()
+        {
+            dataGridView1.Columns[4].HeaderCell.Value = "DIRECCIONAMIENTO";
+            string op;
+            for (int i = 1; i < dataGridView1.Rows.Count; i++)
+            {
+                op = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                if (op != "RESW" && op != "BASE" && op != "RESB" && op != "ORG" && op != "FIX" && op != "FLOAT" && op != "HIO" && op != "NORM"
+                    && op != "SIO" && op != "ADDR" && op != "CLEAR" && op != "COMPR" && op != "DIVR" && op != "MULR" && op != "RMO" && op != "SHIFTL"
+                    && op != "SHIFTR" && op != "SUBR" && op != "SVC" && op != "TIXR")
+                {
+                    switch (dataGridView1.Rows[i].Cells[3].Value.ToString()[0])
+                    {
+                        case '#':
+                            dataGridView1.Rows[i].Cells[4].Value = "Inmediato";
+                            break;
+                        case '@':
+                            dataGridView1.Rows[i].Cells[4].Value = "Indirecto";
+                            break;
+                        default:
+                            dataGridView1.Rows[i].Cells[4].Value = "Simple";
+                            break;
+                    }
+                }
+            }
+        }
+
         public void crearCodigoObj(string TabSim)
         {
             string CodOP = "";
