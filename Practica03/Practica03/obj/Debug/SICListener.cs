@@ -208,17 +208,6 @@ public interface ISICListener : IParseTreeListener {
 	void ExitChecarInstru([NotNull] SICParser.ChecarInstruContext context);
 
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SICParser.checarOPExt"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterChecarOPExt([NotNull] SICParser.ChecarOPExtContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="SICParser.checarOPExt"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitChecarOPExt([NotNull] SICParser.ChecarOPExtContext context);
-
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="SICParser.checarInstruExt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -228,6 +217,50 @@ public interface ISICListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitChecarInstruExt([NotNull] SICParser.ChecarInstruExtContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.checarInsF1"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterChecarInsF1([NotNull] SICParser.ChecarInsF1Context context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.checarInsF1"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitChecarInsF1([NotNull] SICParser.ChecarInsF1Context context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.checarInsF2"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterChecarInsF2([NotNull] SICParser.ChecarInsF2Context context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.checarInsF2"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitChecarInsF2([NotNull] SICParser.ChecarInsF2Context context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.checarInsF3"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterChecarInsF3([NotNull] SICParser.ChecarInsF3Context context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.checarInsF3"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitChecarInsF3([NotNull] SICParser.ChecarInsF3Context context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SICParser.checarInsF4"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterChecarInsF4([NotNull] SICParser.ChecarInsF4Context context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SICParser.checarInsF4"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitChecarInsF4([NotNull] SICParser.ChecarInsF4Context context);
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SICParser.checarOPF2"/>.

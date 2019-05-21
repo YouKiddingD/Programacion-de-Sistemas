@@ -145,18 +145,39 @@ public interface ISICVisitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitChecarInstru([NotNull] SICParser.ChecarInstruContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="SICParser.checarOPExt"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitChecarOPExt([NotNull] SICParser.ChecarOPExtContext context);
-
-	/// <summary>
 	/// Visit a parse tree produced by <see cref="SICParser.checarInstruExt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitChecarInstruExt([NotNull] SICParser.ChecarInstruExtContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SICParser.checarInsF1"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitChecarInsF1([NotNull] SICParser.ChecarInsF1Context context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SICParser.checarInsF2"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitChecarInsF2([NotNull] SICParser.ChecarInsF2Context context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SICParser.checarInsF3"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitChecarInsF3([NotNull] SICParser.ChecarInsF3Context context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="SICParser.checarInsF4"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitChecarInsF4([NotNull] SICParser.ChecarInsF4Context context);
 
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="SICParser.checarOPF2"/>.

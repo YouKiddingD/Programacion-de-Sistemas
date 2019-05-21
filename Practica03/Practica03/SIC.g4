@@ -29,7 +29,7 @@ inicio: checarEtiq checarINIT checarOpSTART updateLine ENTER {i++;};
 
 fin: checarEtiq checarACABA checarOpSTART ENTER {i++;}{using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutai, true)){ file.WriteLine(linea);}}; 
 
-expr : (checarEtiq checarInstruExt updateCPInst updateLine ENTER
+expr : (checarEtiq checarInsF3 updateCPInst updateLine ENTER
 	| checarEtiq checarInstru checarOp updateCPInst updateLine ENTER
 	| checarEtiq checarRsub updateCPInst updateLine ENTER
 	| checarEtiq checarDirec checarOp casoDirec updateLine ENTER
@@ -159,13 +159,6 @@ checarInstru
 	INSTRUCCION {linea+=$INSTRUCCION.text;}
 	;
 
-checarOPExt
-	:
-	checarOPF2
-	|
-	checarOPF3
-	;
-
 checarInstruExt
 	:
 	FORMATO1 {linea+=$FORMATO1.text; form=1;}
@@ -181,12 +174,37 @@ checarInstruExt
 	WS
 	;
 
+checarInsF1
+	:
+	FORMATO1 {linea+=$FORMATO1.text; form=1;}
+	|
+	~FORMATO1 checarInsF2
+	;
+
+checarInsF2
+	:
+	FORMATO2 {linea+=$FORMATO2.text; form=1;} checarOPF2
+	|
+	~FORMATO2 checarInsF3
+	;
+checarInsF3
+	:
+	FORMATO3 {linea+=$FORMATO3.text; form=1;} checarOPF3
+	|
+	~FORMATO3 checarInsF4
+	;
+checarInsF4
+	:
+	FORMATO4 {linea+=$FORMATO4.text; form=1;} checarOPF2
+	|
+	~FORMATO4 {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error Instruccion en la linea: " + i);}}{linea+= $FORMATO4.text;}
+	;
 
 checarOPF2
 	:
-	~REG {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error OPF2 en la linea: " + i);}}{linea+= $REG.text;}
-	|
 	REG {linea+=$REG.text;}
+	|
+	~REG {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){file.WriteLine("Error OPF2 en la linea: " + i);}}{linea+=$REG.text;}
 	;
 
 checarOPF3
@@ -252,7 +270,8 @@ FORMATO4: ('+'FORMATO3);
 INSTRUCCION: ('ADD'|'AND'|'COMP'|'DIV'|'J'|'JEQ'|'JGT'|'JLT'|'JSUB'|'LDA'|'LDCH'|'LDL'|'LDX'|'MUL'|'OR'|'RD'|'STA'|'STCH'|'STL'|'STSW'|'STX'|'SUB'|'TD'|'TIX'|'WD')'\t'?;
 INDIRECTO:'@'(ETIQUETA|OPERANDO);
 INMEDIATO:'#'(ETIQUETA|OPERANDO);
-REG: ('A'|'X'|'L'|'CP'|'SW'|'B'|'S'|'T'|'F')(','(OPERANDO|('A'|'X'|'L'|'CP'|'SW'|'B'|'S'|'T'|'F')))?'\t'?; 
+NUM:[0-9];
+REG: ('A'|'X'|'L'|'CP'|'SW'|'B'|'S'|'T'|'F')(','(NUM|('A'|'X'|'L'|'CP'|'SW'|'B'|'S'|'T'|'F')))?'\t'?; 
 OPERANDO: [0-9]+(('H'|'h')?)((', X'|',X')?);
 ETIQUETA: ([A-Z]+[0-9]*)((', X'|',X')?)'\t'? | '\t';
 ENTER: '\n';
