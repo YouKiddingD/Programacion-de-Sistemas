@@ -27,7 +27,7 @@ go[string vale, string vali]: {rutae=vale; rutai = vali;}inicio expr* fin;
 
 inicio: checarEtiq checarINIT checarOpSTART updateLine ENTER {i++;};
 
-fin: checarEtiq checarACABA checarOpEND {i++;}{using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutai, true)){ file.WriteLine(linea);}}; 
+fin: checarEtiq checarACABA checarOpSTART ENTER {i++;}{using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutai, true)){ file.WriteLine(linea);}}; 
 
 expr : (checarEtiq checarInstruExt updateCPInst updateLine ENTER
 	| checarEtiq checarInstru checarOp updateCPInst updateLine ENTER
@@ -88,6 +88,8 @@ checarOpSTART
 	checarOpbyte
 	|
 	~OPERANDO
+	|
+	WS
 	;
 
 checarOp
@@ -116,20 +118,9 @@ checarOpEND
 	:
 	ETIQUETA{linea+=$ETIQUETA.text;}
 	|
-	OPERANDO {
-	linea+= $OPERANDO.text;
-	if($OPERANDO.text[$OPERANDO.text.Length-1]=='H' || $OPERANDO.text[$OPERANDO.text.Length-1]=='h')
-	{
-		string final = $OPERANDO.text.Substring(0, $OPERANDO.text.Length - 1);
-		OP = System.Convert.ToInt32(final,16);
-	}
-	else
-	{
-		OP =  System.Int32.Parse($OPERANDO.text);
-	}
-	}
+	~ETIQUETA
 	|
-	~OPERANDO
+	WS
 	;
 
 checarDirec
@@ -157,6 +148,8 @@ checarEtiq
 	~ETIQUETA  {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error ETIQUETA en la linea: " + i);}}
 	|
 	ETIQUETA  {linea+= CP + " "; if($ETIQUETA.text=="\t" || $ETIQUETA.text==" "){linea+="u ";}else{linea+=$ETIQUETA.text;}}
+	|
+	WS
 	;
 
 checarInstru
@@ -183,13 +176,15 @@ checarInstruExt
 	|
 	FORMATO4 {linea+=$FORMATO4.text; form=4;} checarOPF3
 	|
+	~FORMATO1 ~FORMATO2  ~FORMATO3  ~FORMATO4 {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error Instruccion en la linea: " + i);}}{linea+= $FORMATO4.text;}
+	|
 	WS
 	;
 
 
 checarOPF2
 	:
-	OPERANDO {linea+=$OPERANDO.text;}
+	~REG {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error OPF2 en la linea: " + i);}}{linea+= $REG.text;}
 	|
 	REG {linea+=$REG.text;}
 	;
@@ -203,6 +198,8 @@ checarOPF3
 	INDIRECTO {linea+=$INDIRECTO.text;}
 	|
 	INMEDIATO {linea+=$INMEDIATO.text;}
+	|
+	~OPERANDO ~ETIQUETA ~INDIRECTO ~INMEDIATO {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error operando en la linea: " + i);}}{linea+= $INMEDIATO.text;}
 	;
 
 
@@ -243,7 +240,7 @@ updateCPByte : {
  */
 
 INIT: 'START''\t'?;
-ACABA: 'END''\t'?;
+ACABA: 'END'('\t'?);
 DIRBYTE: 'BYTE''\t'?;
 OPERANDBYTE: ('C'QUOTE[A-Z]*[0-9]*[A-Z]*QUOTE | 'X'QUOTE[A-F]*[0-9]*[A-F]*QUOTE );
 DIRECTIVA: ('WORD'|'RESB'|'RESW'|'BASE'|'ORG')'\t'?;
