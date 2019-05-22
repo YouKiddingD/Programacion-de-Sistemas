@@ -23,6 +23,32 @@ C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Progra
 C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.csproj.CopyComplete
 C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.exe
 C:\Users\Mildred Sifuentes\Downloads\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.pdb
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\bin\Debug\Practica03.exe.config
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\bin\Debug\Practica03.exe
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\bin\Debug\Practica03.pdb
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\bin\Debug\Antlr4.Runtime.dll
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\bin\Debug\Antlr4.Runtime.xml
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.csprojAssemblyReference.cache
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\SICLexer.cs
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\SICParser.cs
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\SICListener.cs
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\SICBaseListener.cs
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\SICVisitor.cs
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\SICBaseVisitor.cs
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.Archivo_Intermedio.resources
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.ArchivoFuente.resources
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.CodigoObjeto.resources
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.Ensamblador.resources
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.Errores.resources
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.Properties.Resources.resources
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.TablaSimbolos.resources
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.csproj.GenerateResource.cache
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.csproj.CopyComplete
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.exe
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.pdb
+C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.MapaMemoria.resources
 C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica03\bin\Debug\Practica03.exe.config
 C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica03\bin\Debug\Practica03.exe
 C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica03\bin\Debug\Practica03.pdb
@@ -48,29 +74,28 @@ C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica0
 C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.exe
 C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.pdb
 C:\Users\a_k_n\Documents\Programas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.csprojResolveAssemblyReference.cache
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.csprojAssemblyReference.cache
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\bin\Debug\Practica03.exe.config
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\bin\Debug\Practica03.exe
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\bin\Debug\Practica03.pdb
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\bin\Debug\Antlr4.Runtime.dll
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\bin\Debug\Antlr4.Runtime.xml
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\SICLexer.cs
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\SICParser.cs
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\SICListener.cs
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\SICBaseListener.cs
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\SICVisitor.cs
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\SICBaseVisitor.cs
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.Archivo_Intermedio.resources
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.ArchivoFuente.resources
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.CodigoObjeto.resources
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.Ensamblador.resources
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.Errores.resources
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.MapaMemoria.resources
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.Properties.Resources.resources
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.TablaSimbolos.resources
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.csproj.GenerateResource.cache
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.csproj.CoreCompileInputs.cache
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.csproj.CopyComplete
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.exe
-C:\Users\DELL\Documents\Lap Work\U\Programacion de Sistemas\Practicas\Programacion-de-Sistemas\Practica03\Practica03\obj\Debug\Practica03.pdb
+C:\Users\a_k_n\Downloads\Practica03\Practica03\bin\Debug\Practica03.exe.config
+C:\Users\a_k_n\Downloads\Practica03\Practica03\bin\Debug\Practica03.exe
+C:\Users\a_k_n\Downloads\Practica03\Practica03\bin\Debug\Practica03.pdb
+C:\Users\a_k_n\Downloads\Practica03\Practica03\bin\Debug\Antlr4.Runtime.dll
+C:\Users\a_k_n\Downloads\Practica03\Practica03\bin\Debug\Antlr4.Runtime.xml
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\Practica03.csprojResolveAssemblyReference.cache
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\Practica03.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\Practica03.Archivo_Intermedio.resources
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\Practica03.ArchivoFuente.resources
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\Practica03.CodigoObjeto.resources
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\Practica03.Ensamblador.resources
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\Practica03.Errores.resources
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\Practica03.MapaMemoria.resources
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\Practica03.Properties.Resources.resources
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\Practica03.TablaSimbolos.resources
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\Practica03.csproj.GenerateResource.Cache
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\Practica03.csproj.CoreCompileInputs.cache
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\Practica03.exe
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\Practica03.pdb
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\SICLexer.cs
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\SICParser.cs
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\SICListener.cs
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\SICBaseListener.cs
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\SICVisitor.cs
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\SICBaseVisitor.cs

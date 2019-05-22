@@ -273,11 +273,11 @@ namespace Practica03
             try
             {
                 string fileError = filePath.Substring(0, filePath.Length - 1);
-
                 if (extendido)
                     file = new System.IO.StreamReader(fileError + "tx");
                 else
                     file = new System.IO.StreamReader(fileError + "ts");
+
                 while ((linea = file.ReadLine()) != null)
                 {
                     errores.cambiarText(linea + '\n');

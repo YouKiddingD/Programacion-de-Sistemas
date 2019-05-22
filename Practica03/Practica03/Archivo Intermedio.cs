@@ -58,19 +58,22 @@ namespace Practica03
                 op = dataGridView1.Rows[i].Cells[2].Value.ToString();
                 if (op != "RESW" && op != "BASE" && op != "RESB" && op != "ORG" && op != "FIX" && op != "FLOAT" && op != "HIO" && op != "NORM"
                     && op != "SIO" && op != "ADDR" && op != "CLEAR" && op != "COMPR" && op != "DIVR" && op != "MULR" && op != "RMO" && op != "SHIFTL"
-                    && op != "SHIFTR" && op != "SUBR" && op != "SVC" && op != "TIXR")
+                    && op != "SHIFTR" && op != "SUBR" && op != "SVC" && op != "TIXR" && op!="" && op!="END")
                 {
-                    switch (dataGridView1.Rows[i].Cells[3].Value.ToString()[0])
+                    if (dataGridView1.Rows[i].Cells[3].Value.ToString()!="")
                     {
-                        case '#':
-                            dataGridView1.Rows[i].Cells[4].Value = "Inmediato";
-                            break;
-                        case '@':
-                            dataGridView1.Rows[i].Cells[4].Value = "Indirecto";
-                            break;
-                        default:
-                            dataGridView1.Rows[i].Cells[4].Value = "Simple";
-                            break;
+                        switch (dataGridView1.Rows[i].Cells[3].Value.ToString()[0])
+                        {
+                            case '#':
+                                dataGridView1.Rows[i].Cells[4].Value = "Inmediato";
+                                break;
+                            case '@':
+                                dataGridView1.Rows[i].Cells[4].Value = "Indirecto";
+                                break;
+                            default:
+                                dataGridView1.Rows[i].Cells[4].Value = "Simple";
+                                break;
+                        }
                     }
                 }
             }

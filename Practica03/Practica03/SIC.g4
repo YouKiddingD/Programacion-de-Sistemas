@@ -29,11 +29,34 @@ inicio: checarEtiq checarINIT checarOpSTART updateLine ENTER {i++;};
 
 fin: checarEtiq checarACABA checarOpSTART ENTER {i++;}{using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutai, true)){ file.WriteLine(linea);}}; 
 
-expr : (checarEtiq checarInsF3 updateCPInst updateLine ENTER
+expr : (checarEtiq checarInstruExt updateCPInst updateLine ENTER
 	| checarEtiq checarInstru checarOp updateCPInst updateLine ENTER
 	| checarEtiq checarRsub updateCPInst updateLine ENTER
 	| checarEtiq checarDirec checarOp casoDirec updateLine ENTER
 	| checarEtiq checarByte checarOpbyte updateCPByte updateLine ENTER){i++;}
+	| WS {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){file.WriteLine("Error en la estructura de la linea: " + i);}}{linea+=$WS.text;}
+	;
+
+checarInstruExt
+	:
+	FORMATO1 {linea+=$FORMATO1.text; form=1;}
+	|
+	FORMATO2 {linea+=$FORMATO2.text; form=2;} checarOPF2
+	|
+	FORMATO3 {linea+=$FORMATO3.text; form=3;} checarOPF3
+	|
+	FORMATO4 {linea+=$FORMATO4.text; form=4;} checarOPF3
+	|
+	WS
+	;
+
+checarOPF2
+	:
+	ANYCHAR {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){file.WriteLine("Error OPF2 en la linea: " + i);}}{linea+=$ANYCHAR.text;}
+	|
+	REG {linea+=$REG.text;}
+	|
+	NUM {linea+=$NUM.text;}
 	;
 
 checarINIT
@@ -58,13 +81,15 @@ checarByte
 	~DIRBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error BYTE en la linea: " + i);}}{linea+= $DIRBYTE.text;CP-=3;}
 	|
 	DIRBYTE {linea+= $DIRBYTE.text;}
+	|
+	ANYCHAR {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error BYTE en la linea: " + i);}}{linea+= $ANYCHAR.text;CP-=3;}
 	;
 
 checarRsub
 	:
-	~EXEP {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error RSUB en la linea: " + i);}}{linea+= $EXEP.text;}
-	|
 	EXEP {linea+= $EXEP.text;}
+	|
+	~EXEP {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error RSUB en la linea: " + i);}}{linea+= $EXEP.text;}
 	;
 
 checarOpSTART
@@ -88,8 +113,6 @@ checarOpSTART
 	checarOpbyte
 	|
 	~OPERANDO
-	|
-	WS
 	;
 
 checarOp
@@ -109,8 +132,6 @@ checarOp
 	|
 	ETIQUETA{linea+=$ETIQUETA.text;}
 	|
-	checarOpbyte
-	|
 	~OPERANDO
 	;
 
@@ -118,9 +139,20 @@ checarOpEND
 	:
 	ETIQUETA{linea+=$ETIQUETA.text;}
 	|
-	~ETIQUETA
+	OPERANDO {
+	linea+= $OPERANDO.text;
+	if($OPERANDO.text[$OPERANDO.text.Length-1]=='H' || $OPERANDO.text[$OPERANDO.text.Length-1]=='h')
+	{
+		string final = $OPERANDO.text.Substring(0, $OPERANDO.text.Length - 1);
+		OP = System.Convert.ToInt32(final,16);
+	}
+	else
+	{
+		OP =  System.Int32.Parse($OPERANDO.text);
+	}
+	}
 	|
-	WS
+	~OPERANDO
 	;
 
 checarDirec
@@ -148,64 +180,24 @@ checarEtiq
 	~ETIQUETA  {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error ETIQUETA en la linea: " + i);}}
 	|
 	ETIQUETA  {linea+= CP + " "; if($ETIQUETA.text=="\t" || $ETIQUETA.text==" "){linea+="u ";}else{linea+=$ETIQUETA.text;}}
-	|
-	WS
 	;
 
 checarInstru
 	:
-	~INSTRUCCION checarDirec
+	FORMATO3 {linea+=$FORMATO3.text;}
 	|
-	INSTRUCCION {linea+=$INSTRUCCION.text;}
+	~FORMATO3 checarDirec
 	;
 
-checarInstruExt
+checarOPExt
 	:
-	FORMATO1 {linea+=$FORMATO1.text; form=1;}
+	checarOPF2
 	|
-	FORMATO2 {linea+=$FORMATO2.text; form=2;} checarOPF2
-	|
-	FORMATO3 {linea+=$FORMATO3.text; form=3;} checarOPF3
-	|
-	FORMATO4 {linea+=$FORMATO4.text; form=4;} checarOPF3
-	|
-	~FORMATO1 ~FORMATO2  ~FORMATO3  ~FORMATO4 {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error Instruccion en la linea: " + i);}}{linea+= $FORMATO4.text;}
-	|
-	WS
+	checarOPF3
 	;
 
-checarInsF1
-	:
-	FORMATO1 {linea+=$FORMATO1.text; form=1;}
-	|
-	~FORMATO1 checarInsF2
-	;
 
-checarInsF2
-	:
-	FORMATO2 {linea+=$FORMATO2.text; form=1;} checarOPF2
-	|
-	~FORMATO2 checarInsF3
-	;
-checarInsF3
-	:
-	FORMATO3 {linea+=$FORMATO3.text; form=1;} checarOPF3
-	|
-	~FORMATO3 checarInsF4
-	;
-checarInsF4
-	:
-	FORMATO4 {linea+=$FORMATO4.text; form=1;} checarOPF2
-	|
-	~FORMATO4 {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error Instruccion en la linea: " + i);}}{linea+= $FORMATO4.text;}
-	;
 
-checarOPF2
-	:
-	REG {linea+=$REG.text;}
-	|
-	~REG {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){file.WriteLine("Error OPF2 en la linea: " + i);}}{linea+=$REG.text;}
-	;
 
 checarOPF3
 	:
@@ -216,8 +208,6 @@ checarOPF3
 	INDIRECTO {linea+=$INDIRECTO.text;}
 	|
 	INMEDIATO {linea+=$INMEDIATO.text;}
-	|
-	~OPERANDO ~ETIQUETA ~INDIRECTO ~INMEDIATO {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error operando en la linea: " + i);}}{linea+= $INMEDIATO.text;}
 	;
 
 
@@ -257,25 +247,25 @@ updateCPByte : {
  * Lexer Rules
  */
 
-INIT: 'START''\t'?;
-ACABA: 'END'('\t'?);
-DIRBYTE: 'BYTE''\t'?;
-OPERANDBYTE: ('C'QUOTE[A-Z]*[0-9]*[A-Z]*QUOTE | 'X'QUOTE[A-F]*[0-9]*[A-F]*QUOTE );
-DIRECTIVA: ('WORD'|'RESB'|'RESW'|'BASE'|'ORG')'\t'?;
-EXEP: 'RSUB''\t'?;
 FORMATO1: ('FIX'|'FLOAT'|'HIO'|'NORM'|'SIO'|'TIO')'\t'?;
 FORMATO2: ('ADDR'|'CLEAR'|'COMPR'|'DIVR'|'MULR'|'RMO'|'SHIFTL'|'SHIFTR'|'SUBR'|'SVC'|'TIXR')'\t'?;
-FORMATO3: ('ADD'|'ADDF'|'AND'|'COMP'|'COMPF'|'DIV'|'DIVF'|'J'|'JEQ'|'JGT'|'JLT'|'JSUB'|'LDA'|'LDB'|'LDCH'|'LDF'|'LDL'|'LDS'|'LDT'|'LDX'|'LPS'|'MUL'|'MULF'|'OR'|'RD'|'RSUB'|'SSK'|'STA'|'STB'|'STCH'|'STF'|'STI'|'STL'|'STS'|'STSW'|'STT'|'STX'|'SUB'|'SUBF'|'TD'|'TIX'|'WD')'\t'?;
+NUM: [0-9];
+REG: ('A'|'X'|'L'|'CP'|'SW'|'B'|'S'|'T'|'F')(','(NUM|('A'|'X'|'L'|'CP'|'SW'|'B'|'S'|'T'|'F')))?'\t'?; 
+EXEP: 'RSUB''\t'?;
+FORMATO3: ('ADD'|'ADDF'|'AND'|'COMP'|'COMPF'|'DIV'|'DIVF'|'J'|'JEQ'|'JGT'|'JLT'|'JSUB'|'LDA'|'LDB'|'LDCH'|'LDF'|'LDL'|'LDS'|'LDT'|'LDX'|'LPS'|'MUL'|'MULF'|'OR'|'RD'|'SSK'|'STA'|'STB'|'STCH'|'STF'|'STI'|'STL'|'STS'|'STSW'|'STT'|'STX'|'SUB'|'SUBF'|'TD'|'TIX'|'WD')'\t'?;
 FORMATO4: ('+'FORMATO3);
-INSTRUCCION: ('ADD'|'AND'|'COMP'|'DIV'|'J'|'JEQ'|'JGT'|'JLT'|'JSUB'|'LDA'|'LDCH'|'LDL'|'LDX'|'MUL'|'OR'|'RD'|'STA'|'STCH'|'STL'|'STSW'|'STX'|'SUB'|'TD'|'TIX'|'WD')'\t'?;
+INIT: 'START''\t'?;
+ACABA: 'END''\t'?;
+DIRBYTE: 'BYTE''\t'?;
+DIRECTIVA: ('WORD'|'RESB'|'RESW'|'BASE'|'ORG')'\t'?;
 INDIRECTO:'@'(ETIQUETA|OPERANDO);
 INMEDIATO:'#'(ETIQUETA|OPERANDO);
-NUM:[0-9];
-REG: ('A'|'X'|'L'|'CP'|'SW'|'B'|'S'|'T'|'F')(','(NUM|('A'|'X'|'L'|'CP'|'SW'|'B'|'S'|'T'|'F')))?'\t'?; 
-OPERANDO: [0-9]+(('H'|'h')?)((', X'|',X')?);
 ETIQUETA: ([A-Z]+[0-9]*)((', X'|',X')?)'\t'? | '\t';
+OPERANDO: ([0-9]+)(('H'|'h')?)((', X'|',X')?);
 ENTER: '\n';
+OPERANDBYTE: ('C'QUOTE[A-Z]*[0-9]*[A-Z]*QUOTE | 'X'QUOTE[A-F]*[0-9]*[A-F]*QUOTE );
 QUOTE : '\'';
 WS
 	:	( |'\r'|'\t') -> channel(HIDDEN)
 	;
+ANYCHAR : . ;
