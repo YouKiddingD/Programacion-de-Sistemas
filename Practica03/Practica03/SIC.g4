@@ -29,12 +29,12 @@ inicio: checarEtiq checarINIT checarOpSTART updateLine ENTER {i++;};
 
 fin: checarEtiq checarACABA checarOpSTART ENTER {i++;}{using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutai, true)){ file.WriteLine(linea);}}; 
 
-expr : (checarEtiq checarInstruExt updateCPInst updateLine ENTER
+expr : (checarEtiq checarInstruExt updateCPInst updateLine ENTER {form = 0;}
 	| checarEtiq checarInstru checarOp updateCPInst updateLine ENTER
 	| checarEtiq checarRsub updateCPInst updateLine ENTER
 	| checarEtiq checarDirec checarOp casoDirec updateLine ENTER
 	| checarEtiq checarByte checarOpbyte updateCPByte updateLine ENTER){i++;}
-	| WS {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){file.WriteLine("Error en la estructura de la linea: " + i);}}{linea+=$WS.text;}
+	| WS {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){file.WriteLine("Error en la estructura de la linea: " + i);}}{linea+="ERROR	";}
 	;
 
 checarInstruExt
@@ -52,7 +52,7 @@ checarInstruExt
 
 checarOPF2
 	:
-	ANYCHAR {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){file.WriteLine("Error OPF2 en la linea: " + i);}}{linea+=$ANYCHAR.text;}
+	ANYCHAR {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){file.WriteLine("Error en la estructura de la linea: " + i);}}{linea+="ERROR	";}
 	|
 	REG {linea+=$REG.text;}
 	|
@@ -71,25 +71,25 @@ checarACABA
 
 checarOpbyte
 	:
-	~OPERANDBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error OPBYTE en la linea: " + i);}}
+	~OPERANDBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error en la estructura de la linea: " + i);}}{linea+= "ERROR	";}
 	|
 	OPERANDBYTE {linea+= $OPERANDBYTE.text; valor = $OPERANDBYTE.text;}
 	;
 
 checarByte
 	:
-	~DIRBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error BYTE en la linea: " + i);}}{linea+= $DIRBYTE.text;CP-=3;}
+	~DIRBYTE {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error en la estructura de la linea: " + i);}}{linea+= "ERROR	";}
 	|
 	DIRBYTE {linea+= $DIRBYTE.text;}
 	|
-	ANYCHAR {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error BYTE en la linea: " + i);}}{linea+= $ANYCHAR.text;CP-=3;}
+	ANYCHAR {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error en la estructura de la linea: " + i);}}{linea+= "ERROR	";}
 	;
 
 checarRsub
 	:
 	EXEP {linea+= $EXEP.text;}
 	|
-	~EXEP {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error RSUB en la linea: " + i);}}{linea+= $EXEP.text;}
+	~EXEP {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error en la estructura de la linea: " + i);}}{linea+= "ERROR	";}
 	;
 
 checarOpSTART
@@ -177,7 +177,7 @@ switch(Direct)
 
 checarEtiq
 	:
-	~ETIQUETA  {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error ETIQUETA en la linea: " + i);}}
+	~ETIQUETA  {using (System.IO.StreamWriter file = new System.IO.StreamWriter(@rutae, true)){ file.WriteLine("Error en la estructura de la linea: " + i);}}{linea+="ERROR	";}
 	|
 	ETIQUETA  {linea+= CP + " "; if($ETIQUETA.text=="\t" || $ETIQUETA.text==" "){linea+="u ";}else{linea+=$ETIQUETA.text;}}
 	;
