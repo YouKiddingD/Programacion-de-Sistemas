@@ -1,0 +1,6 @@
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\SICLexer.cs
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\SICParser.cs
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\SICListener.cs
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\SICBaseListener.cs
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\SICVisitor.cs
+C:\Users\a_k_n\Downloads\Practica03\Practica03\obj\Debug\SICBaseVisitor.cs
